@@ -1,4 +1,4 @@
-# 📌 killer_joki_-development_story
+**# 📌 killer_joki_-development_story
 
 > **조기현** — 프론트엔드 개발자의 매일매일 성장 기록  
 > Vue.js · TypeScript · Cloud Integration · Enterprise Web Apps ✨
@@ -62,3 +62,4 @@
     git add .
     git commit -m "docs: YYYY-MM-DD 작업 정리 추가"
     git push
+**
