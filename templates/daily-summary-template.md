@@ -1,25 +1,25 @@
-# Daily Summary Template
+# 일일 작업 정리 템플릿
 
-Date: YYYY-MM-DD
+날짜: YYYY-MM-DD
 
-## Overview
-- Concise, high-level summary of what was done today.
+## 개요
+- 오늘 수행한 핵심 작업을 간결하게 요약합니다.
 
-## Details
-### Changes / Fixes
-- What changed, where, and why.
+## 상세
+### 변경/수정 사항
+- 무엇이, 어디서, 왜 변경되었는지 기록합니다.
 
-### Tooling / Infra
-- Any build, CI/CD, or tooling improvements.
+### 도구/인프라
+- 빌드, CI/CD, 개발 도구 관련 개선 사항을 적습니다.
 
-### Docs / Knowledge
-- Links to docs, decisions, and references.
+### 문서/지식
+- 참고 문서, 결정 사항, 관련 링크 등을 정리합니다.
 
-## Environment / Context
-- Versions, services, or dependencies that matter.
+## 환경/컨텍스트
+- 중요한 버전, 서비스 의존성 등을 기록합니다.
 
 ## Notion
-- Page: <Notion page title or link>
+- 페이지: <Notion 페이지 제목 또는 링크>
 
-## Next steps
-- Short, actionable follow-ups.
+## 다음 단계
+- 짧고 실행 가능한 후속 작업을 나열합니다.
