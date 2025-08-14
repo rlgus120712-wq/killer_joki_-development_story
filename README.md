@@ -1,4 +1,4 @@
-<h1 align="center">🔥 killer_joki_-development_story 🔥</h1>
+<h1 align="center">🔥 와따네참조기 🔥</h1>
 
 <p align="center">
   <b>조기현 — 프론트엔드 개발자의 매일 성장 로그</b><br/>
