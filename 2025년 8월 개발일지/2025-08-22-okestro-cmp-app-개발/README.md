@@ -1,4 +1,4 @@
-# 🚀 2025-08-22 Okestro CMP App 개발 작업 일지
+# 🚀 2025-08-22 개발 작업 일지
 
 ## 📋 TL;DR
 - **주요 작업**: Service Template 관련 Hook 및 Mutation 개발
@@ -135,8 +135,6 @@ packages/cmp/src/features/
 ---
 
 ## 🔗 관련 링크
-
-- [Okestro CMP App Repository](https://github.com/okestro-cmp-app)
 - [Vue 3 Documentation](https://vuejs.org/)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Nx Monorepo Guide](https://nx.dev/)
@@ -145,4 +143,4 @@ packages/cmp/src/features/
 
 **작성일**: 2025년 8월 22일  
 **작성자**: 조기현 (Killer Joki)  
-**프로젝트**: Okestro CMP Application Development
+**프로젝트**: Application Development
