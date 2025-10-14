@@ -26,7 +26,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: 'linear',
           }}
-          className="absolute top-1/4 -left-20 w-72 h-72 bg-white/5 rounded-full blur-3xl"
+          className="absolute top-1/4 -left-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -38,7 +38,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: 'linear',
           }}
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-white/5 rounded-full blur-3xl"
+          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -59,7 +59,7 @@ const Hero = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute -inset-2 rounded-full bg-gradient-to-r from-gray-500 via-gray-400 to-gray-500 blur-lg opacity-75"
+                className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-lg opacity-75"
               />
               <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
                 <Image
@@ -111,15 +111,15 @@ const Hero = () => {
               href="https://github.com/rlgus120712-wq"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 glass rounded-full hover:bg-white/20 transition-colors group"
+              className="p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
             >
-              <Github className="w-6 h-6 group-hover:text-white transition-colors" />
+              <Github className="w-6 h-6 group-hover:text-primary-500 transition-colors" />
             </a>
             <a
               href="mailto:rlgus120712@gmail.com"
-              className="p-3 glass rounded-full hover:bg-white/20 transition-colors group"
+              className="p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
             >
-              <Mail className="w-6 h-6 group-hover:text-white transition-colors" />
+              <Mail className="w-6 h-6 group-hover:text-primary-500 transition-colors" />
             </a>
           </motion.div>
 
@@ -131,7 +131,7 @@ const Hero = () => {
           >
             <button
               onClick={scrollToAbout}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-gray-400 hover:text-primary-500 transition-colors"
             >
               <motion.div
                 animate={{ y: [0, 10, 0] }}
