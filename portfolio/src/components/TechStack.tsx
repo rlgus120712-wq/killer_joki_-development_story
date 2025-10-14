@@ -161,7 +161,7 @@ const TechStack = () => {
           className="mt-8 text-center"
         >
           <a
-            href="https://github.com/rlgus120712-wq/killer_joki_-development_story"
+            href="https://github.com/rlgus120712-wq/killer_joki_-development_story/tree/main/portfolio"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-blue-500 rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all group"
