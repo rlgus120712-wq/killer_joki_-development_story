@@ -78,13 +78,13 @@ const Contact = () => {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="glass p-6 rounded-xl hover:bg-white/10 transition-all group text-center"
             >
-              <div className="text-gray-300 mb-4 flex justify-center group-hover:scale-110 transition-transform">
+              <div className="text-primary-500 mb-4 flex justify-center group-hover:scale-110 transition-transform">
                 {contact.icon}
               </div>
               <h3 className="text-lg font-bold mb-2 text-white">
                 {contact.title}
               </h3>
-              <p className="text-sm text-gray-400 group-hover:text-white transition-colors">
+              <p className="text-sm text-gray-400 group-hover:text-primary-400 transition-colors">
                 {contact.value}
               </p>
             </motion.a>
