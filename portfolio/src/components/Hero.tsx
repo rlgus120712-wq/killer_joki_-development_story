@@ -45,7 +45,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          {/* Profile Image - 더 크게! */}
+          {/* Profile Image - 훨씬 더 크게! 얼굴이 잘 보이도록! */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -56,13 +56,15 @@ const Hero = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-lg opacity-75"
+                className="absolute -inset-4 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-lg opacity-75"
               />
-              <img
-                src="/killer_joki_-development_story/profile.jpg"
-                alt="조기현 프로필"
-                className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white/10 shadow-2xl"
-              />
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[450px] lg:h-[450px] rounded-full bg-gray-900/80 backdrop-blur-sm border-4 border-white/10 shadow-2xl overflow-hidden p-2">
+                <img
+                  src="/killer_joki_-development_story/profile.jpg"
+                  alt="조기현 프로필"
+                  className="w-full h-full rounded-full object-contain"
+                />
+              </div>
             </div>
           </motion.div>
 
