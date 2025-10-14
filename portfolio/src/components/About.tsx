@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code2, Rocket, Users, Sparkles, Factory, Shield, Zap } from 'lucide-react';
+import { Code2, Rocket, Users, Sparkles, Factory, Shield, Zap, ShoppingCart, Key } from 'lucide-react';
 
 const About = () => {
   const { ref, inView } = useInView({
@@ -91,6 +91,12 @@ const About = () => {
               • <span className="text-primary-500 font-semibold">Okestro CMP</span>에서 프론트엔드 개발자로 근무 중
             </p>
             <p>
+              • <span className="text-primary-500 font-semibold">서비스 카탈로그</span> 시스템 구축 - 클라우드 서비스 신청 및 프로비저닝 자동화
+            </p>
+            <p>
+              • <span className="text-primary-500 font-semibold">Keycloak</span> 기반 Token 인증 시스템 도입 및 구현
+            </p>
+            <p>
               • <span className="text-primary-500 font-semibold">NX Monorepo</span> 기반 대규모 프로젝트 아키텍처 설계 및 개발
             </p>
             <p>
@@ -110,6 +116,29 @@ const About = () => {
         >
           <h3 className="text-2xl font-bold mb-4 text-white">경력 하이라이트</h3>
           <div className="space-y-6 text-gray-300">
+            <div className="border-l-4 border-green-500 pl-4">
+              <div className="flex items-center gap-2 mb-2">
+                <ShoppingCart className="w-5 h-5 text-green-500" />
+                <h4 className="text-green-500 font-semibold">Okestro CMP - 서비스 카탈로그</h4>
+              </div>
+              <p>• <span className="text-primary-400">클라우드 서비스 신청 및 관리</span> 시스템 구축</p>
+              <p>• VM, Storage, Network 등 인프라 리소스 카탈로그화</p>
+              <p>• 사용자 맞춤형 서비스 신청 워크플로우 설계 및 구현</p>
+              <p>• 승인 프로세스 및 자동 프로비저닝 통합</p>
+            </div>
+
+            <div className="border-l-4 border-yellow-500 pl-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Key className="w-5 h-5 text-yellow-500" />
+                <h4 className="text-yellow-500 font-semibold">Okestro CMP - Keycloak 인증</h4>
+              </div>
+              <p>• <span className="text-primary-400">Keycloak</span> 기반 중앙 인증 시스템 도입</p>
+              <p>• JWT Token 기반 인증 방식으로 전환</p>
+              <p>• SSO (Single Sign-On) 구현으로 사용자 경험 개선</p>
+              <p>• Role-Based Access Control (RBAC) 권한 관리 체계 구축</p>
+              <p>• Token Refresh 및 보안 강화 로직 구현</p>
+            </div>
+
             <div className="border-l-4 border-primary-500 pl-4">
               <div className="flex items-center gap-2 mb-2">
                 <Zap className="w-5 h-5 text-primary-500" />
