@@ -72,7 +72,7 @@ const Navigation = () => {
               onClick={() => handleNavClick('#home')}
               className="text-xl font-bold gradient-text cursor-pointer"
             >
-              조기현
+              Portfolio
             </button>
 
             {/* Desktop Navigation */}
