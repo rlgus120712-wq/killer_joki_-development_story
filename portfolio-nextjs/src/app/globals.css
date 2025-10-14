@@ -246,3 +246,208 @@ html.light .border-blue-500 {
 html.light .border-pink-500 {
   border-color: #db2777 !important;
 }
+
+/* ============================================
+   PDF 인쇄 최적화 스타일
+   ============================================ */
+
+@media print {
+  /* 페이지 설정 */
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  /* 기본 배경 및 색상 */
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 11pt;
+    line-height: 1.4;
+  }
+
+  /* 배경 제거 */
+  * {
+    background: transparent !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  /* 섹션 간격 조정 */
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 1.5rem !important;
+    padding: 0.75rem 0 !important;
+  }
+
+  /* 제목 스타일 */
+  h1, h2, h3, h4, h5, h6 {
+    color: #1a1a1a !important;
+    page-break-after: avoid;
+    font-weight: 700 !important;
+  }
+
+  h1 {
+    font-size: 24pt !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  h2 {
+    font-size: 18pt !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 2px solid #2563eb !important;
+    padding-bottom: 0.25rem !important;
+  }
+
+  h3 {
+    font-size: 14pt !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  h4 {
+    font-size: 12pt !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  /* 본문 텍스트 */
+  p, li, span {
+    color: #333 !important;
+    font-size: 10pt !important;
+    line-height: 1.4 !important;
+  }
+
+  /* 그라디언트 텍스트는 일반 색상으로 */
+  .gradient-text {
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+    color: #2563eb !important;
+  }
+
+  /* 카드 스타일 */
+  .glass {
+    border: 1px solid #ddd !important;
+    border-radius: 6px !important;
+    padding: 0.75rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* 성과 녹색 유지 */
+  .text-green-400 {
+    color: #047857 !important;
+    font-weight: 700 !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: unset !important;
+    background-clip: unset !important;
+  }
+
+  /* 아이콘 색상 */
+  .text-primary-500,
+  .text-blue-500 {
+    color: #2563eb !important;
+  }
+
+  .text-green-500 {
+    color: #16a34a !important;
+  }
+
+  .text-yellow-500 {
+    color: #eab308 !important;
+  }
+
+  .text-purple-500 {
+    color: #9333ea !important;
+  }
+
+  /* Border 색상 유지 */
+  .border-blue-500 {
+    border-color: #2563eb !important;
+  }
+
+  .border-green-500 {
+    border-color: #16a34a !important;
+  }
+
+  .border-yellow-500 {
+    border-color: #eab308 !important;
+  }
+
+  .border-purple-500 {
+    border-color: #9333ea !important;
+  }
+
+  /* 링크 */
+  a {
+    color: #2563eb !important;
+    text-decoration: underline !important;
+  }
+
+  /* 이미지 */
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  /* 프로필 이미지 크기 조정 */
+  #home img {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  /* 애니메이션 효과 제거 */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* 페이지 나누기 방지 */
+  h1, h2, h3, h4, h5, h6,
+  .glass,
+  ul, ol {
+    page-break-inside: avoid;
+  }
+
+  /* 간격 조정 */
+  .space-y-8 > * {
+    margin-bottom: 1rem !important;
+  }
+
+  .space-y-6 > * {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .space-y-4 > * {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .space-y-2 > * {
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* 그리드를 일렬로 */
+  .grid {
+    display: block !important;
+  }
+
+  .grid > * {
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* 기술 스택 태그 */
+  [class*="bg-primary-500"] {
+    background-color: #e0f2fe !important;
+    border: 1px solid #2563eb !important;
+    color: #2563eb !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+    display: inline-block !important;
+    margin: 0.15rem !important;
+    font-size: 9pt !important;
+  }
+
+  /* Contact 섹션 */
+  #contact a {
+    display: inline-block !important;
+    margin: 0.25rem !important;
+  }
+}
