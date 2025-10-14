@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { generatePDF } from '@/utils/generatePDF';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,8 +39,8 @@ const Navigation = () => {
     }
   };
 
-  const handleDownloadPDF = () => {
-    window.print();
+  const handleDownloadPDF = async () => {
+    await generatePDF();
   };
 
   const navItems = [
@@ -63,7 +64,7 @@ const Navigation = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 print:hidden ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
             : 'bg-transparent'
@@ -95,7 +96,7 @@ const Navigation = () => {
               <button
                 onClick={handleDownloadPDF}
                 className="flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-primary-400 rounded-lg hover:bg-primary-500/30 transition-all border border-primary-500/30"
-                title="PDF 다운로드"
+                title="PDF 다운로드 (웹 디자인 그대로)"
               >
                 <Download className="w-4 h-4" />
                 <span className="text-sm font-medium">PDF</span>
