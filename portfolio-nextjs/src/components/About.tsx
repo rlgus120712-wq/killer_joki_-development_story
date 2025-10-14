@@ -98,10 +98,10 @@ const About = () => {
                 <span className="text-white font-bold text-lg">🏢 Okestro CMP</span> - 클라우드 관리 플랫폼
               </p>
               <ul className="space-y-2 pl-4">
-                <li>• <span className="text-white font-semibold">NX Monorepo</span> 기반 멀티 패키지 아키텍처 설계</li>
-                <li>• <span className="text-white font-semibold">300+</span> 재사용 가능한 UI 컴포넌트 라이브러리 구축</li>
-                <li>• <span className="text-white font-semibold">Feature-Sliced Design</span> 패턴으로 확장성 확보</li>
-                <li>• <span className="text-white font-semibold">TanStack Query</span>로 서버 상태 관리 최적화</li>
+                <li>• NX Monorepo 기반 멀티 패키지 아키텍처 설계</li>
+                <li>• 300+ 재사용 가능한 UI 컴포넌트 라이브러리 구축</li>
+                <li>• Feature-Sliced Design 패턴으로 확장성 확보</li>
+                <li>• TanStack Query로 서버 상태 관리 최적화</li>
               </ul>
             </div>
             <div>
@@ -132,7 +132,7 @@ const About = () => {
             <div className="border-l-4 border-green-500 pl-6 py-2">
               <div className="flex items-center gap-2 mb-3">
                 <ShoppingCart className="w-6 h-6 text-green-500" />
-                <h4 className="text-green-400 font-bold text-lg">Okestro CMP - 서비스 카탈로그</h4>
+                <h4 className="text-white font-bold text-lg">Okestro CMP - 서비스 카탈로그</h4>
               </div>
               <div className="space-y-2 font-medium">
                 <p>• 클라우드 리소스 신청 워크플로우 전체 설계 및 구현</p>
@@ -147,7 +147,7 @@ const About = () => {
             <div className="border-l-4 border-yellow-500 pl-6 py-2">
               <div className="flex items-center gap-2 mb-3">
                 <Key className="w-6 h-6 text-yellow-500" />
-                <h4 className="text-yellow-400 font-bold text-lg">Okestro CMP - Keycloak 인증 시스템</h4>
+                <h4 className="text-white font-bold text-lg">Okestro CMP - Keycloak 인증 시스템</h4>
               </div>
               <div className="space-y-2 font-medium">
                 <p>• Keycloak 기반 중앙 인증 서버 구축 및 프론트엔드 연동</p>
@@ -160,10 +160,10 @@ const About = () => {
               </div>
             </div>
 
-            <div className="border-l-4 border-primary-500 pl-6 py-2">
+            <div className="border-l-4 border-purple-500 pl-6 py-2">
               <div className="flex items-center gap-2 mb-3">
-                <Zap className="w-6 h-6 text-primary-500" />
-                <h4 className="text-primary-400 font-bold text-lg">AI 개발 도구 혁신 (MCP 프로토콜)</h4>
+                <Zap className="w-6 h-6 text-purple-500" />
+                <h4 className="text-white font-bold text-lg">AI 개발 도구 혁신 (MCP 프로토콜)</h4>
               </div>
               <div className="space-y-2 font-medium">
                 <p>• Cursor AI + MCP 프로토콜 활용 개발 워크플로우 자동화</p>
@@ -177,7 +177,7 @@ const About = () => {
             </div>
 
             <div className="border-l-4 border-blue-500 pl-6 py-2">
-              <h4 className="text-blue-400 font-bold text-lg mb-3">CJ 올리브네트웍스 - 스마트 HACCP</h4>
+              <h4 className="text-white font-bold text-lg mb-3">CJ 올리브네트웍스 - 스마트 HACCP</h4>
               <div className="space-y-2 font-medium">
                 <p>• 인천화요 공장 스마트 HACCP 인증마크 획득 기여 (2023)</p>
                 <p>• 실시간 공정 모니터링 대시보드 개발 (Vue.js + Chart.js)</p>
@@ -188,8 +188,8 @@ const About = () => {
               </div>
             </div>
 
-            <div className="border-l-4 border-purple-500 pl-6 py-2">
-              <h4 className="text-purple-400 font-bold text-lg mb-3">농심엔지니어링 - 스마트팩토리 MES</h4>
+            <div className="border-l-4 border-pink-500 pl-6 py-2">
+              <h4 className="text-white font-bold text-lg mb-3">농심엔지니어링 - 스마트팩토리 MES</h4>
               <div className="space-y-2 font-medium">
                 <p className="font-bold">📌 정식품 공장 MES 구축 및 1·2차 고도화 (2021-2023)</p>
                 <p>• 생산 계획 및 실적 관리 시스템 개발</p>
