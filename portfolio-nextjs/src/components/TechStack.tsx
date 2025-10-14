@@ -1,180 +1,116 @@
-'use client'
+'use client';
 
 import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { portfolioTechStack } from '@/data/portfolioTech';
-import { Code2 } from 'lucide-react';
+import { CheckCircle2, ExternalLink } from 'lucide-react';
+import { portfolioTechStack } from '../data/portfolioTech';
 
-const TechStack = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
-
-  const categoryColors = {
-    core: 'from-blue-500 to-cyan-500',
-    styling: 'from-purple-500 to-pink-500',
-    animation: 'from-yellow-500 to-orange-500',
-    deployment: 'from-green-500 to-emerald-500',
-    tooling: 'from-red-500 to-rose-500',
-  };
-
-  const categoryNames = {
-    core: '핵심 프레임워크',
-    styling: '스타일링',
-    animation: '애니메이션',
-    deployment: '배포',
-    tooling: '개발 도구',
-  };
-
+export default function TechStack() {
   return (
-    <section id="tech-stack" className="py-20 px-4 bg-black/30" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="tech-stack" className="section-padding">
+      <div className="container mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
         >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Code2 className="w-12 h-12 text-primary-500" />
-            <h2 className="text-4xl sm:text-5xl font-bold gradient-text">
-              Portfolio Tech Stack
-            </h2>
-          </div>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            이 포트폴리오는 다음의 최신 기술들로 제작되었습니다<br />
-            <span className="text-primary-400 font-semibold">
-              Next.js 14 + React 18 + TypeScript 5 + Tailwind CSS 3 + Framer Motion 11
-            </span>
+          <h2 className="section-title">Portfolio Tech Stack</h2>
+          <p className="section-subtitle">
+            이 포트폴리오 웹사이트 구축에 사용된 기술들
           </p>
-        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {portfolioTechStack.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="relative group"
-            >
-              <div className="glass p-6 rounded-xl hover:bg-white/10 transition-all h-full">
-                {/* Gradient Border Effect */}
-                <div
-                  className={`absolute inset-0 rounded-xl bg-gradient-to-br ${
-                    categoryColors[tech.category]
-                  } opacity-0 group-hover:opacity-20 transition-opacity blur-xl`}
-                />
-
-                {/* Content */}
-                <div className="relative">
-                  <div className="text-4xl mb-3">{tech.icon}</div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {tech.name}
-                  </h3>
-                  <p className="text-sm text-gray-400 mb-3">
-                    {tech.description}
-                  </p>
-                  <span
-                    className={`inline-block px-3 py-1 text-xs font-semibold rounded-full bg-gradient-to-r ${
-                      categoryColors[tech.category]
-                    } text-white`}
-                  >
-                    {categoryNames[tech.category]}
-                  </span>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {portfolioTechStack.map((tech, index) => (
+              <motion.div
+                key={tech.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="glass p-6 rounded-xl hover:scale-105 transition-transform"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
+                    <tech.icon className="w-8 h-8 text-primary-400" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold mb-2">{tech.name}</h3>
+                    <p className="text-sm text-gray-400 mb-3">{tech.description}</p>
+                    {tech.features && (
+                      <ul className="space-y-1">
+                        {tech.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-start gap-2 text-xs text-gray-500">
+                            <CheckCircle2 className="w-3 h-3 text-green-400 flex-shrink-0 mt-0.5" />
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Why These Technologies Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16 glass p-8 rounded-xl"
-        >
-          <h3 className="text-2xl font-bold mb-6 text-white text-center">
-            왜 이 기술들을 선택했나요?
-          </h3>
-          <div className="grid md:grid-cols-2 gap-6 text-gray-300">
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">⚡</span>
-                <div>
-                  <h4 className="font-semibold text-primary-400 mb-1">
-                    성능 최적화
-                  </h4>
-                  <p className="text-sm">
-                    Next.js의 Static Site Generation과 Image Optimization으로
-                    빠른 로딩 속도를 실현했습니다.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">🎨</span>
-                <div>
-                  <h4 className="font-semibold text-primary-400 mb-1">
-                    모던한 디자인
-                  </h4>
-                  <p className="text-sm">
-                    Tailwind CSS와 Framer Motion으로 아름답고 인터랙티브한
-                    UI/UX를 구현했습니다.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">🔍</span>
-                <div>
-                  <h4 className="font-semibold text-primary-400 mb-1">
-                    SEO 최적화
-                  </h4>
-                  <p className="text-sm">
-                    Next.js의 메타데이터 API와 서버 사이드 렌더링으로 검색
-                    엔진 최적화를 달성했습니다.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-2xl">🚀</span>
-                <div>
-                  <h4 className="font-semibold text-primary-400 mb-1">
-                    자동화된 배포
-                  </h4>
-                  <p className="text-sm">
-                    Vercel의 Git 통합으로 푸시만 하면 자동으로 배포되는
-                    워크플로우를 구축했습니다.
-                  </p>
-                </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
 
-        {/* GitHub Repository Link */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="mt-8 text-center"
-        >
-          <a
-            href="https://github.com/rlgus120712-wq/killer_joki_-development_story/tree/main/portfolio-nextjs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-blue-500 rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all group"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-12 glass p-8 rounded-xl"
           >
-            <Code2 className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            <span>소스 코드 보기</span>
-          </a>
+            <h3 className="text-2xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              Why These Technologies?
+            </h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold mb-3 text-primary-400">⚡ 성능 최적화</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• Next.js App Router로 Server-Side Rendering</li>
+                  <li>• 이미지 자동 최적화 및 Lazy Loading</li>
+                  <li>• 코드 스플리팅으로 초기 로딩 속도 개선</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-primary-400">🔍 SEO 최적화</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• 메타데이터 자동 생성</li>
+                  <li>• 검색 엔진 크롤링 최적화</li>
+                  <li>• Open Graph & Twitter Card 지원</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-primary-400">🚀 자동 배포</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• Vercel을 통한 CI/CD 자동화</li>
+                  <li>• Git Push 즉시 프로덕션 배포</li>
+                  <li>• Edge Network로 글로벌 성능</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-3 text-primary-400">🎨 현대적 UI</h4>
+                <ul className="space-y-2 text-sm text-gray-400">
+                  <li>• Tailwind CSS로 빠른 스타일링</li>
+                  <li>• Framer Motion 애니메이션</li>
+                  <li>• 반응형 디자인 & 다크모드</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-6 border-t border-gray-800">
+              <a
+                href="https://github.com/rlgus120712-wq/killer_joki_-development_story/tree/main/portfolio-nextjs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all"
+              >
+                <ExternalLink className="w-5 h-5" />
+                소스 코드 보기
+              </a>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
   );
-};
-
-export default TechStack;
+}
