@@ -44,9 +44,13 @@
     @apply bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 bg-clip-text text-transparent;
   }
 
-  /* Light Mode Gradient Text */
+  /* Light Mode Gradient Text - 더 진하게 */
   html.light .gradient-text {
-    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
+    background: linear-gradient(90deg, #1e40af 0%, #7c3aed 50%, #db2777 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 800 !important;
   }
 
   /* Dark Mode Glass */
@@ -54,9 +58,9 @@
     @apply bg-white/5 backdrop-blur-sm border border-white/10;
   }
 
-  /* Light Mode Glass */
+  /* Light Mode Glass - 더 명확한 경계 */
   html.light .glass {
-    @apply bg-white border border-gray-200 shadow-md;
+    @apply bg-white border-2 border-blue-200 shadow-lg;
   }
 
   .card-hover {
@@ -64,7 +68,8 @@
   }
 
   html.light .card-hover:hover {
-    @apply shadow-xl shadow-gray-300/50;
+    @apply shadow-2xl;
+    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.3), 0 10px 10px -5px rgba(59, 130, 246, 0.2) !important;
   }
 }
 
@@ -91,11 +96,11 @@ html.light ::-webkit-scrollbar-track {
 }
 
 html.light ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded-full;
+  @apply bg-blue-400 rounded-full;
 }
 
 html.light ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  @apply bg-blue-500;
 }
 
 /* Smooth animations */
@@ -127,53 +132,136 @@ html.light ::-webkit-scrollbar-thumb:hover {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Light Mode - Clean & Colorful */
+/* ============================================
+   Light Mode - 강조 강화
+   ============================================ */
+
+/* 섹션 배경 - 더 명확한 구분 */
 html.light section {
   background-color: #ffffff;
 }
 
 html.light section:nth-child(even) {
-  background-color: #fafafa;
+  background-color: #f8fafc;
 }
 
 html.light nav {
   background-color: rgba(255, 255, 255, 0.95) !important;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e5e7eb;
 }
 
-/* Light Mode Text - 진하고 명확하게 */
+/* Light Mode Text - 명확하고 진하게 */
 html.light h1,
 html.light h2,
 html.light h3,
 html.light h4,
 html.light h5,
 html.light h6 {
-  color: #111827 !important;
-  font-weight: 700;
+  color: #0f172a !important;
+  font-weight: 800 !important;
 }
 
 html.light p,
 html.light span:not(.gradient-text),
 html.light div,
 html.light li {
-  color: #374151 !important;
+  color: #1e293b !important;
+  font-weight: 500 !important;
 }
 
 html.light .text-gray-300,
 html.light .text-gray-400 {
-  color: #4b5563 !important;
+  color: #334155 !important;
+  font-weight: 500 !important;
 }
 
 html.light .text-white {
-  color: #111827 !important;
+  color: #0f172a !important;
+  font-weight: 700 !important;
 }
 
-/* Light Mode - Cards */
+/* Light Mode - Cards - 더 명확한 경계 */
 html.light .bg-black\/30 {
-  background-color: #f9fafb !important;
+  background-color: #f1f5f9 !important;
+  border: 1px solid #e2e8f0;
 }
 
 html.light .bg-white\/5,
 html.light .bg-white\/10 {
   background-color: #ffffff !important;
+}
+
+/* Light Mode - 아이콘 색상 강화 */
+html.light .text-primary-500 {
+  color: #3b82f6 !important;
+}
+
+html.light .text-green-500 {
+  color: #10b981 !important;
+}
+
+html.light .text-yellow-500 {
+  color: #f59e0b !important;
+}
+
+html.light .text-purple-500 {
+  color: #a855f7 !important;
+}
+
+html.light .text-blue-500 {
+  color: #3b82f6 !important;
+}
+
+html.light .text-pink-500 {
+  color: #ec4899 !important;
+}
+
+html.light .text-red-500 {
+  color: #ef4444 !important;
+}
+
+/* Light Mode - 강조 색상 (초록색) 더 진하게 */
+html.light .text-green-400 {
+  color: #059669 !important;
+  font-weight: 700 !important;
+}
+
+/* Light Mode - Border 색상 강화 */
+html.light .border-green-500 {
+  border-color: #10b981 !important;
+  border-width: 3px !important;
+}
+
+html.light .border-yellow-500 {
+  border-color: #f59e0b !important;
+  border-width: 3px !important;
+}
+
+html.light .border-purple-500 {
+  border-color: #a855f7 !important;
+  border-width: 3px !important;
+}
+
+html.light .border-blue-500 {
+  border-color: #3b82f6 !important;
+  border-width: 3px !important;
+}
+
+html.light .border-pink-500 {
+  border-color: #ec4899 !important;
+  border-width: 3px !important;
+}
+
+/* Light Mode - Hover 효과 강화 */
+html.light .hover\:bg-white\/10:hover {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+html.light .hover\:text-primary-500:hover {
+  color: #2563eb !important;
+}
+
+html.light .hover\:text-primary-400:hover {
+  color: #3b82f6 !important;
 }
