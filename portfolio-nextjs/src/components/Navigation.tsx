@@ -1,14 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '@/contexts/ThemeContext';
+import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -69,32 +68,12 @@ const Navigation = () => {
               ))}
               
               {/* Theme Toggle Button */}
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="w-5 h-5 text-yellow-400" />
-                ) : (
-                  <Moon className="w-5 h-5 text-gray-700" />
-                )}
-              </button>
+              <ThemeToggle />
             </div>
 
             {/* Mobile Menu Button & Theme Toggle */}
             <div className="md:hidden flex items-center space-x-4">
-              <button
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300"
-                aria-label="Toggle theme"
-              >
-                {theme === 'dark' ? (
-                  <Sun className="w-5 h-5 text-yellow-400" />
-                ) : (
-                  <Moon className="w-5 h-5 text-gray-700" />
-                )}
-              </button>
+              <ThemeToggle />
               
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
