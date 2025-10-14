@@ -12,13 +12,13 @@
     @apply border-gray-800;
   }
 
-  /* Light Mode */
+  /* Light Mode - 더 부드럽고 가독성 높은 색상 */
   html.light body {
-    @apply bg-gray-50 text-gray-900;
+    @apply bg-white text-gray-900;
   }
 
   html.light * {
-    @apply border-gray-200;
+    @apply border-gray-300;
   }
 }
 
@@ -31,26 +31,33 @@
     background-size: 50px 50px;
   }
 
-  /* Light Mode Grid Background */
+  /* Light Mode Grid Background - 더 은은하게 */
   html.light .grid-background {
     background-image: 
-      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
     background-size: 50px 50px;
   }
 
+  /* Dark Mode Gradient Text */
   .gradient-text {
     @apply bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 bg-clip-text text-transparent;
   }
 
-  /* Dark Mode Glass */
-  .glass {
-    @apply bg-white/5 backdrop-blur-sm;
+  /* Light Mode Gradient Text - 더 진하고 선명하게 */
+  html.light .gradient-text {
+    @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent;
   }
 
-  /* Light Mode Glass */
+  /* Dark Mode Glass */
+  .glass {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+  }
+
+  /* Light Mode Glass - 더 선명한 카드 */
   html.light .glass {
-    @apply bg-white/70 backdrop-blur-sm shadow-lg;
+    @apply bg-white border border-gray-200 shadow-md;
+    backdrop-filter: none;
   }
 
   .card-hover {
@@ -58,8 +65,8 @@
   }
 
   /* Light Mode Card Hover */
-  html.light .card-hover {
-    @apply hover:shadow-primary-500/30;
+  html.light .card-hover:hover {
+    @apply shadow-xl shadow-blue-500/20;
   }
 }
 
@@ -122,24 +129,101 @@ html.light ::-webkit-scrollbar-thumb:hover {
   animation: float 3s ease-in-out infinite;
 }
 
-/* Light Mode - Text Colors */
-html.light .text-gray-300 {
-  @apply text-gray-700;
+/* Light Mode - Text & Background Overrides for Better Readability */
+
+/* Section Backgrounds */
+html.light section {
+  background-color: #ffffff !important;
+}
+
+html.light section:nth-child(even) {
+  background-color: #f9fafb !important;
+}
+
+/* Navigation */
+html.light nav {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+html.light nav.bg-gray-900\/95 {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Text Colors - 가독성 극대화 */
+html.light .text-gray-300,
+html.light button.text-gray-300,
+html.light a.text-gray-300 {
+  color: #374151 !important; /* gray-700 */
 }
 
 html.light .text-gray-400 {
-  @apply text-gray-600;
+  color: #6b7280 !important; /* gray-500 */
 }
 
-html.light .text-white {
-  @apply text-gray-900;
+html.light .text-white,
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4 {
+  color: #111827 !important; /* gray-900 */
 }
 
-/* Light Mode - Background Colors */
-html.light section {
-  background-color: rgba(249, 250, 251, 0.8) !important;
+/* Hover States */
+html.light button:hover,
+html.light a:hover {
+  color: #2563eb !important; /* blue-600 */
 }
 
-html.light nav {
-  background-color: rgba(255, 255, 255, 0.95) !important;
+/* Mobile Menu */
+html.light .md\:hidden + div {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Cards and Boxes */
+html.light [class*="bg-black"],
+html.light [class*="bg-gray-900"],
+html.light [class*="bg-gray-800"] {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+}
+
+/* Primary Button & Links */
+html.light .text-primary-500 {
+  color: #2563eb !important;
+}
+
+html.light .hover\:text-primary-500:hover {
+  color: #1d4ed8 !important;
+}
+
+/* Subtle backgrounds */
+html.light .bg-black\/30 {
+  background-color: #f9fafb !important;
+}
+
+html.light .bg-white\/5,
+html.light .bg-white\/10 {
+  background-color: #f3f4f6 !important;
+}
+
+/* Profile Image Border */
+html.light img {
+  border-color: #e5e7eb !important;
+}
+
+/* Code blocks & Pre */
+html.light pre,
+html.light code {
+  background-color: #f3f4f6 !important;
+  color: #1f2937 !important;
+}
+
+/* Tags & Badges */
+html.light [class*="badge"],
+html.light [class*="tag"] {
+  background-color: #e0e7ff !important;
+  color: #3730a3 !important;
 }
