@@ -126,6 +126,17 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ============================================
+   성과 영역 녹색 스타일링 (다크 모드)
+   ============================================ */
+
+/* 다크 모드: 밝고 선명한 에메랄드 녹색 */
+.text-green-400 {
+  color: #10b981 !important; /* 더 밝고 선명한 에메랄드 녹색 */
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+/* ============================================
    Light Mode - 명확한 가독성 개선
    ============================================ */
 
@@ -180,10 +191,15 @@ html.light .bg-black\/30 {
   border: 1px solid #e5e7eb !important;
 }
 
-/* 강조 색상 - 성과 초록색 매우 진하게! */
+/* 라이트 모드: 진한 숲 녹색으로 성과 강조! */
 html.light .text-green-400 {
-  color: #15803d !important;
+  color: #047857 !important; /* 매우 진한 에메랄드 녹색 */
   font-weight: 800 !important;
+  text-shadow: none;
+  background: linear-gradient(135deg, #047857 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 html.light .text-green-500 {
