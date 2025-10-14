@@ -40,14 +40,14 @@
     background-size: 50px 50px;
   }
 
-  /* Dark Mode Gradient Text */
+  /* Dark Mode Gradient Text - 파란색 제거 */
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gray-300 via-gray-200 to-gray-400 bg-clip-text text-transparent;
   }
 
-  /* Light Mode Gradient Text - 매우 진하게 */
+  /* Light Mode Gradient Text - 파란색 제거, 회색 그라데이션 */
   html.light .gradient-text {
-    background: linear-gradient(90deg, #1e40af 0%, #7c3aed 50%, #db2777 100%);
+    background: linear-gradient(90deg, #374151 0%, #1f2937 50%, #111827 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -66,7 +66,7 @@
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-gray-500/20;
   }
 
   html.light .card-hover:hover {
@@ -187,7 +187,7 @@ html.light .text-white {
   color: #000000 !important;
 }
 
-/* Button 및 Link - 진한 검정 */
+/* Button 및 Link - 파란색 제거, 회색으로 */
 html.light button,
 html.light a {
   color: #000000 !important;
@@ -196,16 +196,16 @@ html.light a {
 
 html.light button:hover,
 html.light a:hover {
-  color: #1d4ed8 !important; /* blue-700 */
+  color: #374151 !important; /* gray-700 - 파란색 제거 */
 }
 
-/* Primary 색상 - 더 진하게 */
+/* Primary 색상 - 파란색 제거 */
 html.light .text-primary-500 {
-  color: #1d4ed8 !important; /* blue-700 */
+  color: #374151 !important; /* gray-700 */
 }
 
 html.light .hover\:text-primary-500:hover {
-  color: #1e3a8a !important; /* blue-900 */
+  color: #1f2937 !important; /* gray-800 */
 }
 
 /* Mobile Menu */
@@ -252,12 +252,12 @@ html.light code {
   font-weight: 600 !important;
 }
 
-/* Tags & Badges - 진한 색상 */
+/* Tags & Badges - 파란색 제거 */
 html.light [class*="badge"],
 html.light [class*="tag"],
 html.light .glass span {
-  background-color: #dbeafe !important;
-  color: #1e3a8a !important;
+  background-color: #f3f4f6 !important;
+  color: #111827 !important; /* gray-900 */
   font-weight: 600 !important;
 }
 
