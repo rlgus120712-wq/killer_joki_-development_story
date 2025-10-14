@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { projects } from '../data/projects';
-import { ExternalLink, Calendar, Briefcase } from 'lucide-react';
+import { ExternalLink, Calendar, Briefcase, Building2 } from 'lucide-react';
 
 const Projects = () => {
   const { ref, inView } = useInView({
@@ -54,6 +54,12 @@ const Projects = () => {
                   </div>
 
                   <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-400">
+                    {project.company && (
+                      <div className="flex items-center gap-2">
+                        <Building2 className="w-4 h-4" />
+                        <span>{project.company}</span>
+                      </div>
+                    )}
                     <div className="flex items-center gap-2">
                       <Briefcase className="w-4 h-4" />
                       <span>{project.role}</span>
