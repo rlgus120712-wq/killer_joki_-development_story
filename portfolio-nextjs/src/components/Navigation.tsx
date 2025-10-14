@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navigation = () => {
@@ -38,6 +38,10 @@ const Navigation = () => {
     }
   };
 
+  const handleDownloadPDF = () => {
+    window.print();
+  };
+
   const navItems = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
@@ -59,7 +63,7 @@ const Navigation = () => {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 print:hidden ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
             : 'bg-transparent'
@@ -87,6 +91,16 @@ const Navigation = () => {
                 </button>
               ))}
               
+              {/* PDF Download Button */}
+              <button
+                onClick={handleDownloadPDF}
+                className="flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-primary-400 rounded-lg hover:bg-primary-500/30 transition-all border border-primary-500/30"
+                title="PDF 다운로드"
+              >
+                <Download className="w-4 h-4" />
+                <span className="text-sm font-medium">PDF</span>
+              </button>
+              
               {/* Theme Toggle Button - DESKTOP */}
               <button
                 onClick={toggleTheme}
@@ -104,6 +118,15 @@ const Navigation = () => {
 
             {/* Mobile Menu Button & Theme Toggle */}
             <div className="md:hidden flex items-center space-x-4">
+              {/* PDF Download Button - MOBILE */}
+              <button
+                onClick={handleDownloadPDF}
+                className="p-2 rounded-full bg-primary-500/20 hover:bg-primary-500/30 transition-all"
+                title="PDF 다운로드"
+              >
+                <Download className="w-5 h-5 text-primary-400" />
+              </button>
+              
               {/* Theme Toggle Button - MOBILE */}
               <button
                 onClick={toggleTheme}
