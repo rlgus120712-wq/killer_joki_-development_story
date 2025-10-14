@@ -1,9 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Download } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { generatePDF } from '@/utils/generatePDF';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,10 +36,6 @@ const Navigation = () => {
       document.documentElement.classList.add('light');
       localStorage.setItem('theme', 'light');
     }
-  };
-
-  const handleDownloadPDF = async () => {
-    await generatePDF();
   };
 
   const navItems = [
@@ -92,16 +87,6 @@ const Navigation = () => {
                 </button>
               ))}
               
-              {/* PDF Download Button */}
-              <button
-                onClick={handleDownloadPDF}
-                className="flex items-center gap-2 px-4 py-2 bg-primary-500/20 text-primary-400 rounded-lg hover:bg-primary-500/30 transition-all border border-primary-500/30"
-                title="PDF 다운로드 (웹 디자인 그대로)"
-              >
-                <Download className="w-4 h-4" />
-                <span className="text-sm font-medium">PDF</span>
-              </button>
-              
               {/* Theme Toggle Button - DESKTOP */}
               <button
                 onClick={toggleTheme}
@@ -119,15 +104,6 @@ const Navigation = () => {
 
             {/* Mobile Menu Button & Theme Toggle */}
             <div className="md:hidden flex items-center space-x-4">
-              {/* PDF Download Button - MOBILE */}
-              <button
-                onClick={handleDownloadPDF}
-                className="p-2 rounded-full bg-primary-500/20 hover:bg-primary-500/30 transition-all"
-                title="PDF 다운로드"
-              >
-                <Download className="w-5 h-5 text-primary-400" />
-              </button>
-              
               {/* Theme Toggle Button - MOBILE */}
               <button
                 onClick={toggleTheme}
