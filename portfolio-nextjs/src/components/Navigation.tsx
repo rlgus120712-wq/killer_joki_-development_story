@@ -1,22 +1,42 @@
 'use client'
 
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
+    // 테마 초기화
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      setIsDark(false);
+      document.documentElement.classList.add('light');
+    }
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    
+    if (newTheme) {
+      document.documentElement.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -67,13 +87,36 @@ const Navigation = () => {
                 </button>
               ))}
               
-              {/* Theme Toggle Button */}
-              <ThemeToggle />
+              {/* Theme Toggle Button - DESKTOP */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300"
+                aria-label="테마 전환"
+                title={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
+              >
+                {isDark ? (
+                  <Sun className="w-5 h-5 text-yellow-400" />
+                ) : (
+                  <Moon className="w-5 h-5 text-gray-700" />
+                )}
+              </button>
             </div>
 
             {/* Mobile Menu Button & Theme Toggle */}
             <div className="md:hidden flex items-center space-x-4">
-              <ThemeToggle />
+              {/* Theme Toggle Button - MOBILE */}
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300"
+                aria-label="테마 전환"
+                title={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
+              >
+                {isDark ? (
+                  <Sun className="w-5 h-5 text-yellow-400" />
+                ) : (
+                  <Moon className="w-5 h-5 text-gray-700" />
+                )}
+              </button>
               
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
