@@ -3,16 +3,27 @@
 @tailwind utilities;
 
 @layer base {
+  /* Dark Mode (기본) */
   body {
-    @apply bg-gray-950 text-white;
+    @apply bg-gray-950 text-white transition-colors duration-300;
   }
 
   * {
     @apply border-gray-800;
   }
+
+  /* Light Mode */
+  .light body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  .light * {
+    @apply border-gray-200;
+  }
 }
 
 @layer utilities {
+  /* Dark Mode Grid Background */
   .grid-background {
     background-image: 
       linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
@@ -20,20 +31,39 @@
     background-size: 50px 50px;
   }
 
+  /* Light Mode Grid Background */
+  .light .grid-background {
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
   .gradient-text {
     @apply bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 bg-clip-text text-transparent;
   }
 
+  /* Dark Mode Glass */
   .glass {
     @apply bg-white/5 backdrop-blur-sm;
+  }
+
+  /* Light Mode Glass */
+  .light .glass {
+    @apply bg-white/70 backdrop-blur-sm shadow-lg;
   }
 
   .card-hover {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary-500/20;
   }
+
+  /* Light Mode Card Hover */
+  .light .card-hover {
+    @apply hover:shadow-primary-500/30;
+  }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Dark Mode */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -48,6 +78,19 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-600;
+}
+
+/* Custom scrollbar - Light Mode */
+.light ::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-500;
 }
 
 /* Smooth animations */
@@ -77,4 +120,30 @@
 
 .animate-float {
   animation: float 3s ease-in-out infinite;
+}
+
+/* Light Mode Text Colors */
+.light .text-gray-300 {
+  @apply text-gray-700;
+}
+
+.light .text-gray-400 {
+  @apply text-gray-600;
+}
+
+.light .text-white {
+  @apply text-gray-900;
+}
+
+/* Light Mode Background Colors */
+.light .bg-black\\/30 {
+  @apply bg-gray-100/80;
+}
+
+.light .bg-gray-900\\/95 {
+  @apply bg-white/95;
+}
+
+.light .bg-gray-900\\/80 {
+  @apply bg-white/90;
 }
