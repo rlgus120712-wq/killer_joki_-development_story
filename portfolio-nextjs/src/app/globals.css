@@ -157,7 +157,7 @@ html.light h6 {
 }
 
 html.light p,
-html.light span:not(.gradient-text),
+html.light span:not(.gradient-text):not(.text-green-400),
 html.light li {
   color: #1f2937 !important;
   font-weight: 500 !important;
@@ -180,10 +180,10 @@ html.light .bg-black\/30 {
   border: 1px solid #e5e7eb !important;
 }
 
-/* 강조 색상 */
+/* 강조 색상 - 성과 초록색 매우 진하게! */
 html.light .text-green-400 {
-  color: #16a34a !important;
-  font-weight: 700 !important;
+  color: #15803d !important;
+  font-weight: 800 !important;
 }
 
 html.light .text-green-500 {
