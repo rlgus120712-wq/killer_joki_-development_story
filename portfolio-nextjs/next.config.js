@@ -6,6 +6,7 @@ const nextConfig = {
   },
   basePath: '',
   trailingSlash: true,
+  // Vercel deployment trigger
 }
 
 module.exports = nextConfig
