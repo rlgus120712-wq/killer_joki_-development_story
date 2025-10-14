@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code2, Rocket, Users, Sparkles, Factory, Shield } from 'lucide-react';
+import { Code2, Rocket, Users, Sparkles, Factory, Shield, Zap } from 'lucide-react';
 
 const About = () => {
   const { ref, inView } = useInView({
@@ -109,16 +109,29 @@ const About = () => {
           className="glass p-8 rounded-xl"
         >
           <h3 className="text-2xl font-bold mb-4 text-white">경력 하이라이트</h3>
-          <div className="space-y-4 text-gray-300">
-            <div>
-              <h4 className="text-primary-500 font-semibold mb-2">CJ 올리브네트웍스</h4>
+          <div className="space-y-6 text-gray-300">
+            <div className="border-l-4 border-primary-500 pl-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Zap className="w-5 h-5 text-primary-500" />
+                <h4 className="text-primary-500 font-semibold">AI 개발 도구 혁신</h4>
+              </div>
+              <p>• <span className="text-primary-400">Cursor AI + MCP 프로토콜</span>을 활용한 개발 자동화</p>
+              <p>• Atlassian (Jira/Confluence), GitHub, Notion, Figma API 통합</p>
+              <p>• 개발 워크플로우 효율화 및 생산성 향상 도구 구축</p>
+              <p>• AI 기반 코드 생성 및 문서 자동화 시스템 개발</p>
+            </div>
+
+            <div className="border-l-4 border-blue-500 pl-4">
+              <h4 className="text-blue-500 font-semibold mb-2">CJ 올리브네트웍스</h4>
               <p>• 인천화요 공장 <span className="text-primary-400">스마트 HACCP 인증마크</span> 획득 기여</p>
               <p>• 식품안전관리 시스템 개발 및 실시간 공정 모니터링</p>
             </div>
-            <div>
-              <h4 className="text-primary-500 font-semibold mb-2">농심엔지니어링</h4>
+
+            <div className="border-l-4 border-purple-500 pl-4">
+              <h4 className="text-purple-500 font-semibold mb-2">농심엔지니어링</h4>
               <p>• <span className="text-primary-400">정식품 스마트팩토리 MES</span> 구축 및 1·2차 고도화</p>
               <p>• <span className="text-primary-400">동원F&B 스마트팩토리</span> 생산 공정 디지털화</p>
+              <p>• Oracle, MS-SQL, MySQL 기반 대용량 데이터 처리</p>
             </div>
           </div>
         </motion.div>
