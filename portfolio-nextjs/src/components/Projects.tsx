@@ -82,7 +82,13 @@ const Projects = () => {
                       {project.highlights.map((highlight, i) => (
                         <li key={i} className="flex items-start">
                           <span className="text-primary-500 mr-2">•</span>
-                          <span>{highlight}</span>
+                          <span className={
+                            highlight.startsWith('📊 성과:')
+                              ? 'text-green-400 font-bold'
+                              : ''
+                          }>
+                            {highlight}
+                          </span>
                         </li>
                       ))}
                     </ul>
