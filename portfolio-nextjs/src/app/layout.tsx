@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { ThemeProvider } from '@/contexts/ThemeContext'
 
 export const metadata: Metadata = {
   title: '조기현 | Frontend Developer Portfolio',
@@ -22,9 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className="scroll-smooth">
-      <body className="antialiased">
-        <ThemeProvider>{children}</ThemeProvider>
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }
