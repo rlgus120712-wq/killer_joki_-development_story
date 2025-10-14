@@ -248,206 +248,330 @@ html.light .border-pink-500 {
 }
 
 /* ============================================
-   PDF 인쇄 최적화 스타일
+   PDF 인쇄 최적화 스타일 - 완전히 재설계
    ============================================ */
 
 @media print {
   /* 페이지 설정 */
   @page {
-    size: A4;
-    margin: 1.5cm;
+    size: A4 portrait;
+    margin: 15mm 12mm;
   }
 
-  /* 기본 배경 및 색상 */
-  body {
+  /* HTML & Body 기본 설정 */
+  html, body {
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
     background: white !important;
-    color: black !important;
-    font-size: 11pt;
-    line-height: 1.4;
+    color: #1a1a1a !important;
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  /* 배경 제거 */
+  /* 모든 요소 강제 표시 - 애니메이션 무시 */
   * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
     background: transparent !important;
     box-shadow: none !important;
     text-shadow: none !important;
+    border-radius: 4px !important;
   }
 
-  /* 섹션 간격 조정 */
+  /* 네비게이션 바 숨기기 */
+  nav,
+  button,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* 섹션 기본 스타일 */
   section {
+    display: block !important;
     page-break-inside: avoid;
-    margin-bottom: 1.5rem !important;
-    padding: 0.75rem 0 !important;
+    margin: 0 0 8mm 0 !important;
+    padding: 4mm 0 !important;
+    width: 100% !important;
+    background: white !important;
   }
 
-  /* 제목 스타일 */
-  h1, h2, h3, h4, h5, h6 {
-    color: #1a1a1a !important;
-    page-break-after: avoid;
-    font-weight: 700 !important;
+  /* 첫 번째 섹션 (Hero) 특별 처리 */
+  section:first-of-type {
+    text-align: center !important;
+    padding: 6mm 0 !important;
+    border-bottom: 2px solid #2563eb !important;
+    margin-bottom: 6mm !important;
   }
 
+  /* 제목 스타일 - 크기별 구분 */
   h1 {
-    font-size: 24pt !important;
-    margin-bottom: 0.5rem !important;
+    font-size: 22pt !important;
+    color: #1a1a1a !important;
+    font-weight: 800 !important;
+    margin: 0 0 3mm 0 !important;
+    letter-spacing: -0.5px !important;
   }
 
   h2 {
-    font-size: 18pt !important;
-    margin-bottom: 0.5rem !important;
-    border-bottom: 2px solid #2563eb !important;
-    padding-bottom: 0.25rem !important;
+    font-size: 16pt !important;
+    color: #2563eb !important;
+    font-weight: 700 !important;
+    margin: 0 0 3mm 0 !important;
+    padding-bottom: 2mm !important;
+    border-bottom: 1.5px solid #2563eb !important;
   }
 
   h3 {
-    font-size: 14pt !important;
-    margin-bottom: 0.4rem !important;
+    font-size: 12pt !important;
+    color: #1a1a1a !important;
+    font-weight: 700 !important;
+    margin: 2mm 0 1.5mm 0 !important;
   }
 
   h4 {
-    font-size: 12pt !important;
-    margin-bottom: 0.3rem !important;
+    font-size: 11pt !important;
+    color: #374151 !important;
+    font-weight: 600 !important;
+    margin: 1.5mm 0 1mm 0 !important;
   }
 
   /* 본문 텍스트 */
-  p, li, span {
-    color: #333 !important;
+  p {
+    color: #374151 !important;
     font-size: 10pt !important;
-    line-height: 1.4 !important;
+    line-height: 1.5 !important;
+    margin: 0 0 2mm 0 !important;
   }
 
-  /* 그라디언트 텍스트는 일반 색상으로 */
+  /* 리스트 */
+  ul, ol {
+    margin: 0 0 2mm 0 !important;
+    padding-left: 5mm !important;
+  }
+
+  li {
+    color: #374151 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.4 !important;
+    margin-bottom: 1mm !important;
+  }
+
+  /* 그라디언트 텍스트를 단색으로 */
   .gradient-text {
+    background: none !important;
     -webkit-background-clip: unset !important;
     -webkit-text-fill-color: unset !important;
     background-clip: unset !important;
     color: #2563eb !important;
+    font-weight: 800 !important;
   }
 
-  /* 카드 스타일 */
+  /* 카드/박스 스타일 */
   .glass {
-    border: 1px solid #ddd !important;
-    border-radius: 6px !important;
-    padding: 0.75rem !important;
-    margin-bottom: 0.75rem !important;
+    background: white !important;
+    border: 1px solid #d1d5db !important;
+    padding: 3mm !important;
+    margin-bottom: 3mm !important;
+    page-break-inside: avoid;
   }
 
-  /* 성과 녹색 유지 */
+  /* 성과 녹색 강조 - 인쇄에서도 유지 */
   .text-green-400 {
     color: #047857 !important;
     font-weight: 700 !important;
+    background: none !important;
     -webkit-background-clip: unset !important;
     -webkit-text-fill-color: unset !important;
     background-clip: unset !important;
   }
 
-  /* 아이콘 색상 */
+  /* 아이콘 및 강조 색상 유지 */
   .text-primary-500,
-  .text-blue-500 {
+  .text-blue-500,
+  svg.text-blue-500,
+  [class*="text-blue"] {
     color: #2563eb !important;
+    fill: #2563eb !important;
   }
 
-  .text-green-500 {
+  .text-green-500,
+  svg.text-green-500,
+  [class*="text-green"]:not(.text-green-400) {
     color: #16a34a !important;
+    fill: #16a34a !important;
   }
 
-  .text-yellow-500 {
-    color: #eab308 !important;
+  .text-yellow-500,
+  svg.text-yellow-500 {
+    color: #ca8a04 !important;
+    fill: #ca8a04 !important;
   }
 
-  .text-purple-500 {
-    color: #9333ea !important;
+  .text-purple-500,
+  svg.text-purple-500 {
+    color: #7c3aed !important;
+    fill: #7c3aed !important;
   }
 
   /* Border 색상 유지 */
-  .border-blue-500 {
+  .border-blue-500,
+  [class*="border-blue"] {
     border-color: #2563eb !important;
   }
 
-  .border-green-500 {
+  .border-green-500,
+  [class*="border-green"] {
     border-color: #16a34a !important;
   }
 
   .border-yellow-500 {
-    border-color: #eab308 !important;
+    border-color: #ca8a04 !important;
   }
 
   .border-purple-500 {
-    border-color: #9333ea !important;
+    border-color: #7c3aed !important;
   }
 
-  /* 링크 */
+  /* 이미지 처리 */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+    page-break-inside: avoid;
+    display: block !important;
+    margin: 0 auto !important;
+  }
+
+  /* 프로필 이미지 크기 */
+  #home img {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50% !important;
+    border: 2px solid #2563eb !important;
+  }
+
+  /* 링크 스타일 */
   a {
     color: #2563eb !important;
     text-decoration: underline !important;
   }
 
-  /* 이미지 */
-  img {
-    max-width: 100% !important;
-    page-break-inside: avoid;
-  }
-
-  /* 프로필 이미지 크기 조정 */
-  #home img {
-    width: 120px !important;
-    height: 120px !important;
-  }
-
-  /* 애니메이션 효과 제거 */
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-
-  /* 페이지 나누기 방지 */
-  h1, h2, h3, h4, h5, h6,
-  .glass,
-  ul, ol {
-    page-break-inside: avoid;
-  }
-
-  /* 간격 조정 */
-  .space-y-8 > * {
-    margin-bottom: 1rem !important;
-  }
-
-  .space-y-6 > * {
-    margin-bottom: 0.75rem !important;
-  }
-
-  .space-y-4 > * {
-    margin-bottom: 0.5rem !important;
-  }
-
-  .space-y-2 > * {
-    margin-bottom: 0.25rem !important;
-  }
-
-  /* 그리드를 일렬로 */
-  .grid {
+  /* 그리드 레이아웃을 블록으로 */
+  .grid,
+  [class*="grid-cols"] {
     display: block !important;
   }
 
-  .grid > * {
-    margin-bottom: 0.5rem !important;
+  .grid > *,
+  [class*="grid-cols"] > * {
+    width: 100% !important;
+    margin-bottom: 2mm !important;
+    display: block !important;
+  }
+
+  /* Flex를 블록으로 */
+  .flex {
+    display: block !important;
+  }
+
+  /* 간격 조정 */
+  .space-y-8 > *,
+  .space-y-6 > *,
+  .space-y-4 > * {
+    margin-bottom: 2mm !important;
+  }
+
+  .space-y-2 > * {
+    margin-bottom: 1mm !important;
+  }
+
+  .gap-6,
+  .gap-4,
+  .gap-2 {
+    gap: 2mm !important;
   }
 
   /* 기술 스택 태그 */
-  [class*="bg-primary-500"] {
-    background-color: #e0f2fe !important;
+  [class*="bg-primary"],
+  [class*="rounded-full"] {
+    background: #eff6ff !important;
     border: 1px solid #2563eb !important;
     color: #2563eb !important;
-    padding: 0.25rem 0.5rem !important;
-    border-radius: 4px !important;
+    padding: 1mm 2mm !important;
+    border-radius: 3px !important;
     display: inline-block !important;
-    margin: 0.15rem !important;
+    margin: 0.5mm !important;
+    font-size: 8.5pt !important;
+    font-weight: 600 !important;
+  }
+
+  /* 페이지 나누기 제어 */
+  h1, h2, h3, h4,
+  .glass,
+  ul, ol {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* Contact 섹션 간결하게 */
+  #contact {
+    margin-top: 4mm !important;
+  }
+
+  #contact .grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+
+  #contact a {
+    display: inline-block !important;
+    margin: 1mm 2mm !important;
     font-size: 9pt !important;
   }
 
-  /* Contact 섹션 */
-  #contact a {
+  /* 불필요한 여백 제거 */
+  .max-w-7xl,
+  .mx-auto,
+  .px-4 {
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* About 섹션 feature 카드 */
+  #about .grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 2mm !important;
+  }
+
+  #about .grid > * {
+    width: auto !important;
+  }
+
+  /* SVG 아이콘 크기 조정 */
+  svg {
+    width: 12px !important;
+    height: 12px !important;
     display: inline-block !important;
-    margin: 0.25rem !important;
+    vertical-align: middle !important;
+  }
+
+  /* Hero 섹션 간결하게 */
+  #home p {
+    font-size: 11pt !important;
+  }
+
+  #home .mb-12,
+  #home .mb-10 {
+    margin-bottom: 3mm !important;
   }
 }
