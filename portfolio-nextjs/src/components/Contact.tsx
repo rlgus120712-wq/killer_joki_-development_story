@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Github, MessageCircle, BookOpen } from 'lucide-react';
+import { Mail, Github, MessageCircle } from 'lucide-react';
 
 const Contact = () => {
   const { ref, inView } = useInView({
