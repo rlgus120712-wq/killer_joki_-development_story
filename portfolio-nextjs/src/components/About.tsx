@@ -100,11 +100,11 @@ const About = () => {
                   <Building2 className="w-5 h-5 text-blue-500" />
                   <h4 className="text-xl font-bold text-white">Okestro</h4>
                 </div>
-                <span className="text-sm text-gray-400">2022.10 ~ 현재</span>
+                <span className="text-sm text-gray-400">2023.01 ~ 현재</span>
               </div>
               <p className="text-gray-300 mb-2">Frontend Developer</p>
               <p className="text-gray-400 text-sm">
-                멀티 클라우드 관리 플랫폼 개발 • 서비스 카탈로그 • Keycloak SSO • NX Monorepo • FSD 패턴
+                멀티 클라우드 관리 플랫폼 개발 • 서비스 카탈로그 • Keycloak SSO • NX Monorepo • FSD 패턴 • MCP 생성형 AI (Cursor, Windsurf)
               </p>
             </div>
 
