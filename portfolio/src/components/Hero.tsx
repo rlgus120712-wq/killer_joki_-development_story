@@ -45,6 +45,27 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="mb-8 flex justify-center"
+          >
+            <div className="relative">
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-md opacity-75"
+              />
+              <img
+                src="/killer_joki_-development_story/profile.jpg"
+                alt="조기현 프로필"
+                className="relative w-48 h-48 rounded-full object-cover border-4 border-white/10 shadow-2xl"
+              />
+            </div>
+          </motion.div>
+
           <motion.h1
             className="text-5xl sm:text-7xl font-bold mb-6"
             initial={{ opacity: 0, scale: 0.5 }}
