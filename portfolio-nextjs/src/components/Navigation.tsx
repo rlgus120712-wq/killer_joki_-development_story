@@ -61,7 +61,7 @@ const Navigation = () => {
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? 'bg-gray-900/95 backdrop-blur-md shadow-lg dark:bg-gray-900/95 light:bg-white/95'
+            ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
             : 'bg-transparent'
         }`}
       >
@@ -81,7 +81,7 @@ const Navigation = () => {
                 <button
                   key={item.name}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-gray-300 hover:text-primary-500 transition-colors cursor-pointer light:text-gray-700"
+                  className="text-gray-300 hover:text-primary-500 transition-colors cursor-pointer"
                 >
                   {item.name}
                 </button>
@@ -90,7 +90,7 @@ const Navigation = () => {
               {/* Theme Toggle Button - DESKTOP */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all"
                 aria-label="테마 전환"
                 title={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
               >
@@ -107,7 +107,7 @@ const Navigation = () => {
               {/* Theme Toggle Button - MOBILE */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300"
+                className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all"
                 aria-label="테마 전환"
                 title={isDark ? '라이트 모드로 전환' : '다크 모드로 전환'}
               >
@@ -120,7 +120,7 @@ const Navigation = () => {
               
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-300 hover:text-primary-500 transition-colors light:text-gray-700"
+                className="text-gray-300 hover:text-primary-500 transition-colors"
               >
                 {isMobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -140,14 +140,14 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-gray-900/95 backdrop-blur-md light:bg-white/95"
+              className="md:hidden bg-gray-900/95 backdrop-blur-md"
             >
               <div className="px-4 py-4 space-y-3">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="block w-full text-left text-gray-300 hover:text-primary-500 transition-colors py-2 cursor-pointer light:text-gray-700"
+                    className="block w-full text-left text-gray-300 hover:text-primary-500 transition-colors py-2 cursor-pointer"
                   >
                     {item.name}
                   </button>
