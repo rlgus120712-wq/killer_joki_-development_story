@@ -35,21 +35,33 @@ export const skills: Skill[] = [
     ],
   },
   {
-    category: "Build Tools & Monorepo",
+    category: "Database",
+    items: [
+      { name: "Oracle", level: 85 },
+      { name: "MS-SQL", level: 85 },
+      { name: "MySQL", level: 90 },
+      { name: "PostgreSQL", level: 75 },
+    ],
+  },
+  {
+    category: "Build Tools & Architecture",
     items: [
       { name: "Vite", level: 90 },
       { name: "NX Monorepo", level: 85 },
       { name: "pnpm", level: 90 },
-      { name: "Webpack", level: 75 },
+      { name: "Webpack", level: 85 },
+      { name: "Module Federation", level: 85 },
     ],
   },
   {
-    category: "Architecture & Design",
+    category: "Architecture & Design Patterns",
     items: [
       { name: "Feature-Sliced Design (FSD)", level: 90 },
+      { name: "Module Federation", level: 85 },
       { name: "Component-Driven Development", level: 95 },
       { name: "Clean Architecture", level: 85 },
       { name: "Design System", level: 85 },
+      { name: "Micro-Frontend", level: 80 },
     ],
   },
   {
