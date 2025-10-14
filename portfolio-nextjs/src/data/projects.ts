@@ -35,7 +35,7 @@ export const projects: Project[] = [
       "300+ 재사용 가능한 Vue 컴포넌트 라이브러리 구축",
       "📊 성과: 리소스 신청 시간 80% 단축 (48시간 → 8시간)"
     ],
-    period: "2022.10 - Present",
+    period: "2023.01 - Present",
   },
   {
     title: "CJ 올리브네트웍스 - 컬티 MES",
@@ -155,11 +155,13 @@ export const projects: Project[] = [
     period: "2023",
   },
   {
-    title: "MCP Integration Hub",
-    description: "AI 도구 통합 개발 워크플로우 자동화 허브",
+    title: "MCP Integration Hub - 생성형 AI 개발 도구",
+    description: "Cursor AI, Windsurf 등 생성형 AI 도구와 MCP 프로토콜을 활용한 개발 워크플로우 자동화",
     tech: [
       "TypeScript",
       "MCP Protocol",
+      "Cursor AI",
+      "Windsurf",
       "Docker",
       "GitHub API",
       "Notion API",
@@ -168,11 +170,14 @@ export const projects: Project[] = [
     ],
     role: "Integration Architect & Developer",
     highlights: [
-      "Cursor AI + MCP 프로토콜 개발 워크플로우 자동화",
-      "Atlassian (Jira/Confluence) 자동 연동",
-      "GitHub PR 생성, 코드 리뷰 자동화",
-      "Notion 문서 동기화 및 Figma 디자인 시스템 연동",
-      "📊 성과: 반복 작업 60% 감소, 생산성 3배 향상"
+      "Cursor AI + Windsurf 생성형 AI 기반 개발 워크플로우 구축",
+      "MCP (Model Context Protocol) 통합 허브 아키텍처 설계",
+      "Atlassian (Jira/Confluence) 자동 이슈 생성 및 문서 연동",
+      "GitHub PR 생성, 코드 리뷰, 저장소 관리 자동화",
+      "Notion 개발 문서 자동 동기화 및 실시간 검색",
+      "Figma 디자인 시스템 자동 코드 변환 및 컴포넌트 생성",
+      "Swagger/OpenAPI 명세 자동 분석 및 API 클라이언트 코드 생성",
+      "📊 성과: 반복 작업 60% 감소, 개발 생산성 3배 향상"
     ],
     period: "2025",
     link: "https://github.com/rlgus120712-wq/killer_joki_-development_story",
