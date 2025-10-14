@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Github, MessageCircle } from 'lucide-react';
+import { Mail, Github } from 'lucide-react';
 
 const Contact = () => {
   const { ref, inView } = useInView({
@@ -24,12 +24,6 @@ const Contact = () => {
       link: 'https://github.com/rlgus120712-wq',
     },
     {
-      icon: <MessageCircle className="w-8 h-8" />,
-      title: 'Development Story',
-      value: '기술 블로그',
-      link: 'https://github.com/rlgus120712-wq/killer_joki_-development_story',
-    },
-    {
       icon: (
         <svg className="w-8 h-8" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -43,7 +37,7 @@ const Contact = () => {
         </svg>
       ),
       title: 'Notion',
-      value: '조기현 개발 자료',
+      value: 'MCP 관련 Notion 문서',
       link: 'https://rowan-cough-23f.notion.site/009caaa7bf3a49e6aff700714288b7db',
     },
   ];
@@ -66,7 +60,7 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {contacts.map((contact, index) => (
             <motion.a
               key={contact.title}
