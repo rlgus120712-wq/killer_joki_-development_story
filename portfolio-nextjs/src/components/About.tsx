@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code2, Rocket, Users, Sparkles, Factory, Shield, Zap, ShoppingCart, Key, TrendingUp, Award } from 'lucide-react';
+import { Code2, Rocket, Users, Sparkles, Factory, Shield, Zap, ShoppingCart, Key, TrendingUp, Award, Boxes } from 'lucide-react';
 
 const About = () => {
   const { ref, inView } = useInView({
@@ -34,7 +34,7 @@ const About = () => {
     {
       icon: <Factory className="w-8 h-8" />,
       title: '스마트팩토리',
-      description: '3개 공장 MES 구축, 생산성 25% 향상 기여',
+      description: '5개 공장 MES 구축, 생산성 평균 30% 향상 기여',
     },
     {
       icon: <Shield className="w-8 h-8" />,
@@ -177,34 +177,77 @@ const About = () => {
             </div>
 
             <div className="border-l-4 border-blue-500 pl-6 py-2">
-              <h4 className="text-white font-bold text-lg mb-3">CJ 올리브네트웍스 - 스마트 HACCP</h4>
-              <div className="space-y-2 font-medium">
-                <p>• 인천화요 공장 스마트 HACCP 인증마크 획득 기여 (2023)</p>
-                <p>• 실시간 공정 모니터링 대시보드 개발 (Vue.js + Chart.js)</p>
-                <p>• CCP (중요관리점) 자동 기록 및 알람 시스템 구축</p>
-                <p>• HACCP 7원칙 기반 위해요소 관리 시스템 설계</p>
-                <p>• Oracle DB 연동 및 대용량 센서 데이터 처리</p>
-                <p>• 📊 성과: <span className="text-green-400 font-bold">식품안전 관리 효율 90% 향상, 국가 인증 획득</span></p>
+              <h4 className="text-white font-bold text-lg mb-3">CJ 올리브네트웍스 - 스마트팩토리 MES (2022-2023)</h4>
+              <div className="space-y-3 font-medium">
+                <div>
+                  <p className="font-bold text-blue-400">📌 컬티 MES 시스템 구축</p>
+                  <p>• 발효 공정 특화 MES 시스템 설계 및 구현</p>
+                  <p>• 실시간 발효 상태 모니터링 및 데이터 수집 자동화</p>
+                  <p>• 품질 관리 및 배치(Batch) 추적 시스템 개발</p>
+                </div>
+                
+                <div>
+                  <p className="font-bold text-blue-400">📌 화요공장 MES 및 일지 관리 시스템</p>
+                  <p>• 증류 공정 MES 시스템 구축 및 스마트 HACCP 인증 획득</p>
+                  <p>• 전자 일지 시스템 개발 - 작업 일보/월보 자동 생성</p>
+                  <p>• CCP (중요관리점) 자동 기록 및 알람 시스템</p>
+                  <p>• 온도, 습도, pH 등 센서 데이터 실시간 수집 및 분석</p>
+                </div>
+                
+                <div>
+                  <p className="font-bold text-blue-400">📌 CJ ONE 스마트팩토리 시스템</p>
+                  <p>• 통합 생산 관리 플랫폼 구축</p>
+                  <p>• 3D 모니터링을 통한 실제 생산라인 시각화</p>
+                  <p>• 실시간 생산량 및 OEE 분석 대시보드 제공</p>
+                  <p>• 공정별 설비 상태 모니터링 및 예측 정비 시스템</p>
+                </div>
+
+                <p>• 📊 성과: <span className="text-green-400 font-bold">3개 공장 생산 효율 35% 향상, HACCP 인증 획득</span></p>
+                <p className="text-sm text-gray-400">Vue.js, TypeScript, Oracle, MS-SQL, Chart.js, 3D Visualization</p>
               </div>
             </div>
 
             <div className="border-l-4 border-pink-500 pl-6 py-2">
-              <h4 className="text-white font-bold text-lg mb-3">농심엔지니어링 - 스마트팩토리 MES</h4>
-              <div className="space-y-2 font-medium">
-                <p className="font-bold">📌 정식품 공장 MES 구축 및 1·2차 고도화 (2021-2023)</p>
-                <p>• 생산 계획 및 실적 관리 시스템 개발</p>
-                <p>• 설비 모니터링 및 OEE (설비종합효율) 분석 대시보드</p>
-                <p>• 품질 관리 및 원자재 추적성 시스템 구축</p>
-                <p>• 작업 지시서 디지털화 - 종이 없는 스마트 공장 실현</p>
-                <p>• Vue.js + Oracle + MySQL 풀스택 개발</p>
+              <h4 className="text-white font-bold text-lg mb-3">농심엔지니어링 - 스마트팩토리 MES (2021-2023)</h4>
+              <div className="space-y-3 font-medium">
+                <div>
+                  <p className="font-bold text-pink-400">📌 정식품 공장 MES 1차 고도화 (2021-2022)</p>
+                  <p>• 생산 계획 및 실적 관리 시스템 개선</p>
+                  <p>• 실시간 설비 모니터링 및 OEE 분석 대시보드 개발</p>
+                  <p>• 생산 공정별 작업 지시 및 실적 수집 자동화</p>
+                </div>
                 
-                <p className="font-bold mt-4">📌 동원F&B 스마트팩토리 (2022-2023)</p>
-                <p>• IoT 센서 데이터 실시간 수집 및 시각화</p>
-                <p>• 공정 이상 감지 AI 알고리즘 프론트엔드 연동</p>
-                <p>• 생산성 분석 리포트 자동 생성 기능</p>
-                <p>• TypeScript + MS-SQL 기반 개발</p>
+                <div>
+                  <p className="font-bold text-pink-400">📌 정식품 공장 MES 2차 고도화 (2022)</p>
+                  <p>• 품질 관리 시스템 강화 및 원자재 추적성 구축</p>
+                  <p>• 작업 지시서 완전 디지털화 - 종이 없는 스마트 공장</p>
+                  <p>• AI 기반 설비 예측 정비 시스템 연동</p>
+                </div>
                 
-                <p className="mt-2">• 📊 성과: <span className="text-green-400 font-bold">총 3개 공장 생산성 평균 25% 향상</span></p>
+                <div>
+                  <p className="font-bold text-pink-400">📌 동원F&B 스마트팩토리 도입 (2022-2023)</p>
+                  <p>• 생산 공정 디지털 트랜스포메이션 프로젝트</p>
+                  <p>• IoT 센서 데이터 실시간 수집 및 시각화</p>
+                  <p>• 공정 이상 감지 AI 알고리즘 프론트엔드 연동</p>
+                  <p>• 3D 모니터링 기반 실시간 생산라인 가시화</p>
+                </div>
+
+                <div>
+                  <p className="font-bold text-pink-400">📌 자연과사람들 스마트팩토리 도입 (2023)</p>
+                  <p>• 친환경 식품 생산 공정 MES 시스템 구축</p>
+                  <p>• 유기농 원료 추적성 및 인증 관리 시스템</p>
+                  <p>• 생산성 분석 리포트 자동 생성 기능</p>
+                </div>
+
+                <div>
+                  <p className="font-bold text-pink-400">📌 녹산 건면 공장 스마트팩토리 도입 (2023)</p>
+                  <p>• 면류 제조 특화 MES 시스템 설계 및 구현</p>
+                  <p>• 건조 공정 온습도 제어 시스템 개발</p>
+                  <p>• 3D 공정 모니터링 및 생산량 실시간 추적</p>
+                </div>
+
+                <p>• 📊 성과: <span className="text-green-400 font-bold">총 5개 공장 생산성 평균 30% 향상</span></p>
+                <p className="text-sm text-gray-400">Vue.js, JavaScript, TypeScript, Oracle, MySQL, MS-SQL, MES, SCADA, IoT, 3D Visualization</p>
               </div>
             </div>
           </div>
