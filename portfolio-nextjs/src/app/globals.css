@@ -47,7 +47,7 @@
   }
 
   html.light .glass {
-    @apply bg-white shadow-md border border-gray-100;
+    @apply bg-blue-50 shadow-md border border-blue-200;
   }
 
   .card-hover {
@@ -55,7 +55,7 @@
   }
 
   html.light .card-hover {
-    @apply hover:shadow-xl hover:shadow-gray-300/50;
+    @apply hover:shadow-xl hover:shadow-blue-300/50;
   }
 
   .section-bg-even {
@@ -63,7 +63,7 @@
   }
 
   html.light .section-bg-even {
-    @apply bg-gray-50;
+    @apply bg-blue-50;
   }
 }
 
@@ -85,7 +85,7 @@ html.light ::-webkit-scrollbar-track {
 }
 
 html.light ::-webkit-scrollbar-thumb {
-  @apply bg-gray-400 rounded-full;
+  @apply bg-blue-400 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -93,7 +93,7 @@ html.light ::-webkit-scrollbar-thumb {
 }
 
 html.light ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-500;
+  @apply bg-blue-500;
 }
 
 /* ============================================
@@ -142,6 +142,10 @@ section {
   margin-bottom: 1.25rem;
   border-radius: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html.light .glass {
+  border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
 /* 타이포그래피 계층 */
@@ -407,7 +411,7 @@ p, span, li {
 }
 
 /* ============================================
-   Light Mode 최적화
+   Light Mode 최적화 - 더 어울리는 색상
    ============================================ */
 
 html.light section {
@@ -426,34 +430,48 @@ html.light h3,
 html.light h4,
 html.light h5,
 html.light h6 {
-  color: #111827;
+  color: #1e293b;
   font-weight: 700;
 }
 
 html.light p,
 html.light span:not(.gradient-text):not(.text-green-400),
 html.light li {
-  color: #1f2937;
+  color: #475569;
   font-weight: 500;
 }
 
 html.light .text-gray-300,
 html.light .text-gray-400 {
-  color: #374151;
+  color: #64748b;
   font-weight: 500;
 }
 
 html.light .text-white {
-  color: #111827;
+  color: #1e293b;
   font-weight: 600;
 }
 
 html.light .text-green-400 {
-  color: #047857;
+  color: #059669;
   font-weight: 700;
 }
 
 html.light .text-primary-400 {
   color: #2563eb;
   font-weight: 600;
+}
+
+/* 라이트 모드에서 회색 요소들을 파란색 계열로 변경 */
+html.light .glass {
+  background-color: #eff6ff;
+  border-color: #dbeafe;
+}
+
+html.light .section-bg-even {
+  background-color: #f8fafc;
+}
+
+html.light .card-hover:hover {
+  box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
 }
