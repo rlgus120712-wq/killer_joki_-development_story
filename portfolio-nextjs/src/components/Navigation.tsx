@@ -66,7 +66,7 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 - 항상 상단에 고정 */}
+      {/* 네비게이터 - 모바일과 데스크톱 모두에서 항상 상단 고정 */}
       <nav
         className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 ${
           isScrolled
@@ -89,6 +89,15 @@ const Navigation = () => {
           opacity: 1,
           width: '100%',
           height: '64px',
+          // 모바일 브라우저 호환성을 위한 추가 스타일
+          WebkitTransform: 'translateZ(0)',
+          transform: 'translateZ(0)',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
+          // iOS Safari에서 fixed position 문제 해결
+          position: 'fixed',
+          // Android Chrome에서 fixed position 문제 해결
+          willChange: 'transform',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -168,6 +177,11 @@ const Navigation = () => {
                 animation: 'slideDown 0.3s ease-out',
                 position: 'relative',
                 zIndex: 100000,
+                // 모바일 메뉴도 고정 위치 보장
+                backgroundColor: 'rgba(17, 24, 39, 0.95)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                borderTop: '1px solid rgba(31, 41, 55, 0.3)',
               }}
             >
               <div className="px-4 py-4 space-y-3">
