@@ -14,6 +14,13 @@ const nextConfig = {
   swcMinify: true,
   // 모바일에서 더 나은 성능을 위한 설정
   reactStrictMode: true,
+  
+  // GitHub Pages 배포를 위한 설정
+  output: 'export',
+  trailingSlash: true,
+  distDir: 'dist',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio-nextjs' : '',
+  basePath: process.env.NODE_ENV === 'production' ? '/portfolio-nextjs' : '',
 }
 
 module.exports = nextConfig
