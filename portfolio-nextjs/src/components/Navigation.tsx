@@ -64,20 +64,17 @@ const Navigation = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // 모바일에서는 스크롤할 때만 헤더 표시, PC에서는 항상 표시
-  const shouldShowHeader = isMobile ? isScrolled : true;
-
   return (
     <>
-      {/* 네비게이터 - 모바일에서는 스크롤 시에만 표시 */}
+      {/* 네비게이터 - PC와 모바일 모두 항상 표시 */}
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: shouldShowHeader ? 0 : -100 }}
+        initial={{ y: 0 }}
+        animate={{ y: 0 }}
         transition={{ duration: 0.3 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
-            : 'bg-transparent'
+            : 'bg-gray-900/80 backdrop-blur-md'
         }`}
         style={{
           position: 'fixed',
@@ -88,7 +85,7 @@ const Navigation = () => {
           backgroundColor: isScrolled ? 'rgba(17, 24, 39, 0.95)' : 'rgba(17, 24, 39, 0.8)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : 'none',
+          boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)',
           borderBottom: '1px solid rgba(31, 41, 55, 0.3)',
         }}
       >
@@ -186,8 +183,8 @@ const Navigation = () => {
         </AnimatePresence>
       </motion.nav>
 
-      {/* Spacer - PC에서는 항상, 모바일에서는 스크롤 시에만 */}
-      <div className={`h-16 ${isMobile ? (isScrolled ? 'block' : 'hidden') : 'block'}`} />
+      {/* Spacer - 항상 공간 확보 */}
+      <div className="h-16" />
     </>
   );
 };
