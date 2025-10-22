@@ -97,6 +97,59 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ============================================
+   다크모드 텍스트 가독성 대폭 개선
+   ============================================ */
+
+/* 다크모드 기본 텍스트 색상 개선 */
+body {
+  color: #f8fafc !important; /* 더 밝은 흰색 */
+}
+
+/* 다크모드 회색 텍스트 색상 개선 */
+.text-gray-300 {
+  color: #e2e8f0 !important; /* 더 밝은 회색 */
+  font-weight: 400 !important;
+}
+
+.text-gray-400 {
+  color: #cbd5e1 !important; /* 더 밝은 회색 */
+  font-weight: 400 !important;
+}
+
+.text-gray-500 {
+  color: #94a3b8 !important; /* 더 밝은 회색 */
+  font-weight: 400 !important;
+}
+
+/* 다크모드 주요 색상 개선 */
+.text-primary-400 {
+  color: #60a5fa !important; /* 더 밝은 파란색 */
+  font-weight: 500 !important;
+}
+
+.text-green-400 {
+  color: #34d399 !important; /* 더 밝은 녹색 */
+  font-weight: 600 !important;
+}
+
+.text-white {
+  color: #ffffff !important; /* 순백색 */
+  font-weight: 500 !important;
+}
+
+/* 다크모드 제목 색상 개선 */
+h1, h2, h3, h4, h5, h6 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+/* 다크모드 본문 텍스트 개선 */
+p, span, li {
+  color: #e2e8f0 !important; /* 더 밝은 회색 */
+  font-weight: 400 !important;
+}
+
+/* ============================================
    모바일 우선 아름다운 디자인 시스템 - 텍스트 크기 대폭 증가
    ============================================ */
 
@@ -234,27 +287,6 @@ html.light ::-webkit-scrollbar-thumb:hover {
     line-height: 1.5 !important;
   }
 
-  /* 색상 최적화 */
-  .text-gray-300 {
-    color: #d1d5db !important;
-    font-weight: 400 !important;
-  }
-
-  .text-gray-400 {
-    color: #9ca3af !important;
-    font-weight: 400 !important;
-  }
-
-  .text-primary-400 {
-    color: #60a5fa !important;
-    font-weight: 500 !important;
-  }
-
-  .text-green-400 {
-    color: #10b981 !important;
-    font-weight: 600 !important;
-  }
-
   /* 버튼 및 링크 최적화 */
   button, .btn {
     min-height: 44px !important;
@@ -358,7 +390,7 @@ html.light ::-webkit-scrollbar-thumb:hover {
    ============================================ */
 
 .text-green-400 {
-  color: #10b981 !important;
+  color: #34d399 !important;
   font-weight: 600 !important;
 }
 
