@@ -12,72 +12,72 @@ const About = () => {
 
   const features = [
     {
-      icon: <Code2 className="w-8 h-8" />,
+      icon: <Code2 className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: '클린 코드',
       description: 'TypeScript와 Feature-Sliced Design으로 유지보수성 99% 향상',
     },
     {
-      icon: <Rocket className="w-8 h-8" />,
+      icon: <Rocket className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: '성능 최적화',
       description: 'Vite + TanStack Query로 초기 로딩 속도 40% 개선',
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: '협업',
       description: 'Jira + Confluence + GitHub으로 10인+ 팀 효율 증대',
     },
     {
-      icon: <Sparkles className="w-8 h-8" />,
+      icon: <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: '지속적 학습',
       description: '매일 기술 블로그 작성 및 최신 트렌드 습득',
     },
     {
-      icon: <Factory className="w-8 h-8" />,
+      icon: <Factory className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: '스마트팩토리',
       description: '8개 공장 MES 구축, 생산성 평균 30% 향상 기여',
     },
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8" />,
       title: 'HACCP 인증',
       description: '식품안전관리 시스템으로 국가 인증마크 획득',
     },
   ];
 
   return (
-    <section id="about" className="py-20 px-4" ref={ref}>
+    <section id="about" className="py-12 sm:py-20 px-4" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text">
             About Me
           </h2>
-          <p className="text-gray-400 text-lg max-w-3xl mx-auto font-semibold">
+          <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto font-semibold px-4">
             매일의 기록 = 성장의 증거<br />
             5년차 프론트엔드 개발자로, Vue 3와 React 생태계에서<br />
             엔터프라이즈급 웹 애플리케이션을 설계하고 구축합니다
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass p-6 rounded-xl hover:bg-white/10 transition-all group"
+              className="glass p-4 sm:p-6 rounded-xl hover:bg-white/10 transition-all group"
             >
-              <div className="text-primary-500 mb-4 group-hover:scale-110 transition-transform">
+              <div className="text-primary-500 mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold mb-2 text-white">
+              <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">
                 {feature.title}
               </h3>
-              <p className="text-gray-400 font-medium">{feature.description}</p>
+              <p className="text-gray-400 font-medium text-sm sm:text-base">{feature.description}</p>
             </motion.div>
           ))}
         </div>
@@ -86,38 +86,38 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="glass p-8 rounded-xl mb-8"
+          className="glass p-6 sm:p-8 rounded-xl mb-8"
         >
           <div className="flex items-center gap-3 mb-6">
-            <Briefcase className="w-7 h-7 text-primary-500" />
-            <h3 className="text-2xl font-bold text-white">경력</h3>
+            <Briefcase className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500" />
+            <h3 className="text-xl sm:text-2xl font-bold text-white">경력</h3>
           </div>
           
-          <div className="space-y-8">
-            <div className="border-l-4 border-blue-500 pl-6">
-              <div className="flex items-center justify-between mb-2">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="border-l-4 border-blue-500 pl-4 sm:pl-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-0">
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-5 h-5 text-blue-500" />
-                  <h4 className="text-xl font-bold text-white">Okestro</h4>
+                  <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
+                  <h4 className="text-lg sm:text-xl font-bold text-white">Okestro</h4>
                 </div>
-                <span className="text-sm text-gray-400">2023.01 ~ 현재</span>
+                <span className="text-xs sm:text-sm text-gray-400">2023.01 ~ 현재</span>
               </div>
-              <p className="text-gray-300 mb-2">Frontend Developer</p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-300 mb-2 text-sm sm:text-base">Frontend Developer</p>
+              <p className="text-gray-400 text-xs sm:text-sm">
                 멀티 클라우드 관리 플랫폼 개발 • 서비스 카탈로그 • Keycloak SSO • NX Monorepo • FSD 패턴 • MCP 생성형 AI (Cursor, Windsurf)
               </p>
             </div>
 
-            <div className="border-l-4 border-green-500 pl-6">
-              <div className="flex items-center justify-between mb-2">
+            <div className="border-l-4 border-green-500 pl-4 sm:pl-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-0">
                 <div className="flex items-center gap-2">
-                  <Building2 className="w-5 h-5 text-green-500" />
-                  <h4 className="text-xl font-bold text-white">크로니즈시스템</h4>
+                  <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                  <h4 className="text-lg sm:text-xl font-bold text-white">크로니즈시스템</h4>
                 </div>
-                <span className="text-sm text-gray-400">2020.01 ~ 2022.10</span>
+                <span className="text-xs sm:text-sm text-gray-400">2020.01 ~ 2022.10</span>
               </div>
-              <p className="text-gray-300 mb-2">Frontend Developer</p>
-              <p className="text-gray-400 text-sm">
+              <p className="text-gray-300 mb-2 text-sm sm:text-base">Frontend Developer</p>
+              <p className="text-gray-400 text-xs sm:text-sm">
                 스마트팩토리 MES • ERP 연계 • 3D 모니터링 • 수율/일지 관리 • 8개 공장 구축
               </p>
             </div>
