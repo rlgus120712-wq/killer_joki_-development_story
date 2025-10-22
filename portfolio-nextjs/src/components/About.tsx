@@ -46,28 +46,22 @@ const About = () => {
   return (
     <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 pt-20" ref={ref}>
       <div className="max-w-7xl mx-auto">
-        {/* About Me 섹션에 배경 추가 */}
+        {/* About Me 섹션 - Skills와 동일한 형태로 변경 */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16 glass bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 gradient-text">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
             About Me
           </h2>
-          <div className="max-w-4xl mx-auto">
-            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
-              매일의 기록 = 성장의 증거
-            </p>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-              5년차 프론트엔드 개발자로, Vue 3와 React 생태계에서<br className="hidden sm:block" />
-              엔터프라이즈급 웹 애플리케이션을 설계하고 구축합니다
-            </p>
-          </div>
+          <p className="text-gray-400 text-lg">
+            매일의 기록 = 성장의 증거
+          </p>
         </motion.div>
 
-        {/* 스킬 카드들 */}
+        {/* 스킬 카드들 - 배경 유지 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {features.map((feature, index) => (
             <motion.div
@@ -75,7 +69,7 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:from-white/10 hover:to-white/15 transition-all duration-300 group"
+              className="glass bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:from-white/10 hover:to-white/15 transition-all duration-300 group"
             >
               <div className="text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
