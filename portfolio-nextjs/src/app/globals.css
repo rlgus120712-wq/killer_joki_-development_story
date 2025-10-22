@@ -112,10 +112,10 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ============================================
-   헤더 스크롤 시에만 표시 (PC와 모바일 동일)
+   헤더 항상 상단 고정 (PC와 모바일 동일)
    ============================================ */
 
-/* 모든 화면 크기에서 헤더 스크롤 시에만 표시 */
+/* 모든 화면 크기에서 헤더 항상 상단 고정 */
 nav {
   position: fixed !important;
   top: 0 !important;
@@ -126,6 +126,7 @@ nav {
   backdrop-filter: blur(12px) !important;
   -webkit-backdrop-filter: blur(12px) !important;
   border-bottom: 1px solid rgba(31, 41, 55, 0.3) !important;
+  transform: translateY(0) !important;
   transition: all 0.3s ease-in-out !important;
   display: block !important;
   visibility: visible !important;
@@ -135,14 +136,8 @@ nav {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* 스크롤하지 않았을 때는 헤더 숨기기 */
-nav:not(.scrolled) {
-  transform: translateY(-100%) !important;
-}
-
-/* 스크롤했을 때는 헤더 보이기 */
+/* 스크롤했을 때 배경 강화 */
 nav.scrolled {
-  transform: translateY(0) !important;
   background-color: rgba(17, 24, 39, 0.95) !important;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
 }
@@ -157,7 +152,7 @@ nav .md\\:hidden {
   z-index: 100000 !important;
 }
 
-/* 모바일에서도 스크롤 시에만 헤더 표시 */
+/* 모바일에서도 헤더 항상 상단 고정 */
 @media (max-width: 768px) {
   nav {
     position: fixed !important;
@@ -168,6 +163,7 @@ nav .md\\:hidden {
     background-color: rgba(17, 24, 39, 0.9) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
+    transform: translateY(0) !important;
     transition: all 0.3s ease-in-out !important;
     display: block !important;
     visibility: visible !important;
@@ -177,20 +173,20 @@ nav .md\\:hidden {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   
-  /* 모바일에서 스크롤하지 않았을 때는 헤더 숨기기 */
-  nav:not(.scrolled) {
-    transform: translateY(-100%) !important;
-  }
-  
-  /* 모바일에서 스크롤했을 때는 헤더 보이기 */
+  /* 모바일에서 스크롤해도 헤더 고정 */
   nav.scrolled {
-    transform: translateY(0) !important;
+    position: fixed !important;
+    top: 0 !important;
     background-color: rgba(17, 24, 39, 0.95) !important;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+    z-index: 99999 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
-/* 데스크톱에서도 스크롤 시에만 헤더 표시 */
+/* 데스크톱에서도 헤더 항상 상단 고정 */
 @media (min-width: 769px) {
   nav {
     position: fixed !important;
@@ -201,6 +197,7 @@ nav .md\\:hidden {
     background-color: rgba(17, 24, 39, 0.9) !important;
     backdrop-filter: blur(12px) !important;
     -webkit-backdrop-filter: blur(12px) !important;
+    transform: translateY(0) !important;
     transition: all 0.3s ease-in-out !important;
     display: block !important;
     visibility: visible !important;
@@ -210,16 +207,16 @@ nav .md\\:hidden {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
   
-  /* 데스크톱에서 스크롤하지 않았을 때는 헤더 숨기기 */
-  nav:not(.scrolled) {
-    transform: translateY(-100%) !important;
-  }
-  
-  /* 데스크톱에서 스크롤했을 때는 헤더 보이기 */
+  /* 데스크톱에서 스크롤해도 헤더 고정 */
   nav.scrolled {
-    transform: translateY(0) !important;
+    position: fixed !important;
+    top: 0 !important;
     background-color: rgba(17, 24, 39, 0.95) !important;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+    z-index: 99999 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
