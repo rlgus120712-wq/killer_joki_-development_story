@@ -26,7 +26,7 @@ const Projects = () => {
   });
 
   return (
-    <section id="projects" className="py-12 sm:py-20 px-3 sm:px-6" ref={ref}>
+    <section id="projects" className="py-12 sm:py-20 px-3 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const Projects = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300"
+              className="glass bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300"
             >
               <div className="p-5 sm:p-6">
                 {/* 프로젝트 헤더 */}
