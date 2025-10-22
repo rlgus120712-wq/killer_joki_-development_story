@@ -10,7 +10,7 @@ import Contact from '@/components/Contact'
 
 export default function Home() {
   return (
-    <>
+    <div className="min-h-screen">
       <Navigation />
       <main className="relative">
         <Hero />
@@ -20,6 +20,6 @@ export default function Home() {
         <TechStack />
         <Contact />
       </main>
-    </>
+    </div>
   )
 }
