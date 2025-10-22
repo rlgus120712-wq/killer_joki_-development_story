@@ -32,7 +32,7 @@ const Navigation = () => {
       nav.style.zIndex = '99999';
       nav.style.width = '100%';
       nav.style.transform = 'translateZ(0)';
-      nav.style.webkitTransform = 'translateZ(0)';
+      (nav.style as any).webkitTransform = 'translateZ(0)';
       nav.style.display = 'block';
       nav.style.visibility = 'visible';
       nav.style.opacity = '1';
@@ -42,13 +42,13 @@ const Navigation = () => {
         nav.style.backgroundColor = 'rgba(17, 24, 39, 0.95)';
         nav.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
         nav.style.backdropFilter = 'blur(12px)';
-        nav.style.webkitBackdropFilter = 'blur(12px)';
+        (nav.style as any).webkitBackdropFilter = 'blur(12px)';
         setIsScrolled(true);
       } else {
         nav.style.backgroundColor = 'rgba(17, 24, 39, 0.9)';
         nav.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
         nav.style.backdropFilter = 'blur(12px)';
-        nav.style.webkitBackdropFilter = 'blur(12px)';
+        (nav.style as any).webkitBackdropFilter = 'blur(12px)';
         setIsScrolled(false);
       }
 
@@ -66,7 +66,7 @@ const Navigation = () => {
       nav.style.zIndex = '99999';
       nav.style.width = '100%';
       nav.style.transform = '';
-      nav.style.webkitTransform = '';
+      (nav.style as any).webkitTransform = '';
     };
 
     // 스크롤 이벤트 핸들러
