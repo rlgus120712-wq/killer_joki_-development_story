@@ -64,16 +64,11 @@ const Navigation = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // PC와 모바일 모두 스크롤할 때만 헤더 표시
-  const shouldShowHeader = isScrolled;
-
   return (
     <>
-      {/* 네비게이터 - 스크롤할 때만 표시 */}
+      {/* 네비게이터 - 항상 상단에 고정 */}
       <nav
         className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 ${
-          shouldShowHeader ? 'translate-y-0' : '-translate-y-full'
-        } ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
             : 'bg-gray-900/90 backdrop-blur-md'
@@ -191,8 +186,8 @@ const Navigation = () => {
         </AnimatePresence>
       </nav>
 
-      {/* Spacer - 스크롤할 때만 공간 확보 */}
-      <div className={`h-16 transition-all duration-300 ${shouldShowHeader ? 'block' : 'hidden'}`} />
+      {/* Spacer - 항상 공간 확보 */}
+      <div className="h-16" />
     </>
   );
 };
