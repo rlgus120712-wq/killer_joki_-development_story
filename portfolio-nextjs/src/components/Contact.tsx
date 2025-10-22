@@ -71,7 +71,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl glass hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20 w-full max-w-sm md:w-80 lg:w-96 hover:scale-105 hover:bg-white/10 dark:hover:bg-white/10"
+              className="group relative overflow-hidden rounded-2xl glass hover:border-gray-600 dark:hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-gray-500/20 dark:hover:shadow-primary-500/20 w-full max-w-sm md:w-80 lg:w-96 hover:scale-105"
             >
               <div className="p-8 flex flex-col items-center justify-center text-center h-full min-h-[220px]">
                 {/* 아이콘 - 완벽한 중앙 정렬 */}
@@ -83,19 +83,19 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                {/* 제목 - 라이트/다크 모드에 맞는 색상 */}
-                <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white text-center group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+                {/* 제목 - 검은색으로 고정 */}
+                <h3 className="text-xl font-bold mb-3 text-black dark:text-white text-center">
                   {contact.title}
                 </h3>
                 
-                {/* 내용 - 라이트/다크 모드에 맞는 색상 */}
-                <p className="text-gray-600 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-white transition-colors break-words leading-relaxed text-center">
+                {/* 내용 - 검은색으로 고정 */}
+                <p className="text-black dark:text-gray-100 break-words leading-relaxed text-center">
                   {contact.value}
                 </p>
               </div>
               
-              {/* 호버 효과 - 라이트/다크 모드 모두에서 자연스럽게 */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              {/* 호버 효과 - 라이트 모드에서는 어두운 글로우, 다크 모드에서는 밝은 글로우 */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-500/5 to-transparent dark:from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.a>
           ))}
         </div>
