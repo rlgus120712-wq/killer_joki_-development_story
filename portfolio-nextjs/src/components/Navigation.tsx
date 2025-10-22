@@ -66,24 +66,25 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 - 순수 CSS로 고정 위치 보장 */}
+      {/* 네비게이터 - 절대 사라지지 않는 헤더 */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-            ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
-            : 'bg-gray-900/80 backdrop-blur-md'
-        }`}
+        className="fixed top-0 left-0 right-0 z-[99999] transition-all duration-300"
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 50,
-          backgroundColor: isScrolled ? 'rgba(17, 24, 39, 0.95)' : 'rgba(17, 24, 39, 0.8)',
+          zIndex: 99999,
+          backgroundColor: isScrolled ? 'rgba(17, 24, 39, 0.95)' : 'rgba(17, 24, 39, 0.9)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)',
+          boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(0, 0, 0, 0.1)',
           borderBottom: '1px solid rgba(31, 41, 55, 0.3)',
+          display: 'block',
+          visibility: 'visible',
+          opacity: 1,
+          width: '100%',
+          height: '64px',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,6 +162,8 @@ const Navigation = () => {
               className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800"
               style={{
                 animation: 'slideDown 0.3s ease-out',
+                position: 'relative',
+                zIndex: 100000,
               }}
             >
               <div className="px-4 py-4 space-y-3">
