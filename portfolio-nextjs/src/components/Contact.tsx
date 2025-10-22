@@ -43,7 +43,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 bg-black/30" ref={ref}>
+    <section id="contact" className="py-20 px-4 section-bg-even" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -60,8 +60,8 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        {/* 모바일에서는 가운데 정렬, 데스크톱에서는 그리드 */}
-        <div className="flex flex-col items-center space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0 mb-16">
+        {/* 카드들을 중앙 정렬로 배치 */}
+        <div className="flex flex-col items-center space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0 md:justify-items-center mb-16">
           {contacts.map((contact, index) => (
             <motion.a
               key={contact.title}
@@ -71,10 +71,10 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20 w-full max-w-sm md:max-w-none"
+              className="group relative overflow-hidden rounded-2xl glass hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20 w-full max-w-sm md:max-w-none"
             >
-              <div className="p-8">
-                {/* 아이콘 */}
+              <div className="p-8 text-center">
+                {/* 아이콘 - 중앙 정렬 */}
                 <div className="flex justify-center mb-6">
                   <div className="p-4 rounded-full bg-gradient-to-br from-primary-500/20 to-primary-600/20 group-hover:from-primary-500/30 group-hover:to-primary-600/30 transition-all duration-300">
                     <div className="text-primary-400 group-hover:text-primary-300 transition-colors">
@@ -83,13 +83,13 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                {/* 제목 */}
-                <h3 className="text-xl font-bold mb-3 text-white text-center">
+                {/* 제목 - 중앙 정렬 */}
+                <h3 className="text-xl font-bold mb-3 text-white">
                   {contact.title}
                 </h3>
                 
-                {/* 내용 */}
-                <p className="text-gray-100 group-hover:text-white transition-colors text-center break-words leading-relaxed">
+                {/* 내용 - 중앙 정렬 */}
+                <p className="text-gray-100 group-hover:text-white transition-colors break-words leading-relaxed">
                   {contact.value}
                 </p>
               </div>
