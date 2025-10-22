@@ -44,7 +44,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-16 sm:py-20 px-4 sm:px-6" ref={ref}>
+    <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 pt-20" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
