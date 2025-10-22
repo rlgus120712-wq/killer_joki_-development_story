@@ -59,7 +59,7 @@ export default function TechStack() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
             viewport={{ once: true }}
-            className="mt-8 glass p-6 rounded-xl"
+            className="mt-8 glass p-6 rounded-xl max-w-4xl mx-auto"
           >
             <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Why These Technologies?
