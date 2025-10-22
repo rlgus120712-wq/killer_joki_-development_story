@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 
@@ -8,83 +8,10 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
-  const navRef = useRef<HTMLElement>(null);
-  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-
-    // 모바일 감지
-    const isMobile = () => window.innerWidth < 768;
-
-    // 모바일에서 헤더를 동적으로 이동시키는 함수
-    const handleMobileScroll = () => {
-      if (!isMobile()) return;
-
-      const currentScrollY = window.scrollY;
-      
-      // 헤더를 항상 상단에 강제로 위치시키기
-      nav.style.position = 'absolute';
-      nav.style.top = `${currentScrollY}px`;
-      nav.style.left = '0px';
-      nav.style.right = '0px';
-      nav.style.zIndex = '99999';
-      nav.style.width = '100%';
-      nav.style.transform = 'translateZ(0)';
-      (nav.style as any).webkitTransform = 'translateZ(0)';
-      nav.style.display = 'block';
-      nav.style.visibility = 'visible';
-      nav.style.opacity = '1';
-      
-      // 스크롤했을 때 배경 강화
-      if (currentScrollY > 50) {
-        nav.style.backgroundColor = 'rgba(17, 24, 39, 0.95)';
-        nav.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
-        nav.style.backdropFilter = 'blur(12px)';
-        (nav.style as any).webkitBackdropFilter = 'blur(12px)';
-        setIsScrolled(true);
-      } else {
-        nav.style.backgroundColor = 'rgba(17, 24, 39, 0.9)';
-        nav.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
-        nav.style.backdropFilter = 'blur(12px)';
-        (nav.style as any).webkitBackdropFilter = 'blur(12px)';
-        setIsScrolled(false);
-      }
-
-      lastScrollY.current = currentScrollY;
-    };
-
-    // 데스크톱에서는 기본 동작
-    const handleDesktopScroll = () => {
-      if (isMobile()) return;
-      
-      nav.style.position = 'fixed';
-      nav.style.top = '0px';
-      nav.style.left = '0px';
-      nav.style.right = '0px';
-      nav.style.zIndex = '99999';
-      nav.style.width = '100%';
-      nav.style.transform = '';
-      (nav.style as any).webkitTransform = '';
-    };
-
-    // 스크롤 이벤트 핸들러
     const handleScroll = () => {
-      if (isMobile()) {
-        handleMobileScroll();
-      } else {
-        handleDesktopScroll();
-      }
-    };
-
-    // 리사이즈 이벤트 핸들러
-    const handleResize = () => {
-      if (isMobile()) {
-        handleMobileScroll();
-      } else {
-        handleDesktopScroll();
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     // 테마 초기화
@@ -94,34 +21,10 @@ const Navigation = () => {
       document.documentElement.classList.add('light');
     }
 
-    // 초기 실행
-    handleScroll();
-
-    // 이벤트 리스너 등록
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleResize);
-    window.addEventListener('orientationchange', handleResize);
+    window.addEventListener('scroll', handleScroll);
     
-    // 모바일 브라우저 특화 이벤트
-    window.addEventListener('touchstart', handleScroll, { passive: true });
-    window.addEventListener('touchmove', handleScroll, { passive: true });
-    window.addEventListener('touchend', handleScroll, { passive: true });
-
-    // 주기적으로 헤더 위치 확인 (모바일에서만)
-    const intervalId = setInterval(() => {
-      if (isMobile()) {
-        handleMobileScroll();
-      }
-    }, 50);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('orientationchange', handleResize);
-      window.removeEventListener('touchstart', handleScroll);
-      window.removeEventListener('touchmove', handleScroll);
-      window.removeEventListener('touchend', handleScroll);
-      clearInterval(intervalId);
     };
   }, []);
 
@@ -155,28 +58,22 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 */}
+      {/* 네비게이터 - 네이버처럼 sticky로 구현 */}
       <nav
-        ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 ${
+        className={`sticky top-0 z-[99999] transition-all duration-300 ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
             : 'bg-gray-900/90 backdrop-blur-md'
         }`}
         style={{
-          position: 'fixed',
+          position: 'sticky',
           top: 0,
-          left: 0,
-          right: 0,
           zIndex: 99999,
           backgroundColor: isScrolled ? 'rgba(17, 24, 39, 0.95)' : 'rgba(17, 24, 39, 0.9)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(0, 0, 0, 0.1)',
           borderBottom: '1px solid rgba(31, 41, 55, 0.3)',
-          display: 'block',
-          visibility: 'visible',
-          opacity: 1,
           width: '100%',
           height: '64px',
         }}
@@ -279,9 +176,6 @@ const Navigation = () => {
           )}
         </AnimatePresence>
       </nav>
-
-      {/* Spacer - 항상 공간 확보 */}
-      <div className="h-16" />
     </>
   );
 };
