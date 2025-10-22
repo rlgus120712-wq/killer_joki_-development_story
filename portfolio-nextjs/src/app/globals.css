@@ -112,10 +112,10 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ============================================
-   헤더 모바일 브라우저 호환성 개선
+   모바일 헤더 강제 고정 - 최강 버전
    ============================================ */
 
-/* 모든 화면 크기에서 헤더 항상 상단 고정 - 모바일 브라우저 최적화 */
+/* 모든 화면 크기에서 헤더 강제 고정 */
 nav {
   position: fixed !important;
   top: 0 !important;
@@ -135,14 +135,23 @@ nav {
   width: 100% !important;
   height: 64px !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
-  /* 모바일 브라우저 호환성 */
+  /* 모바일 브라우저 최적화 */
   -webkit-backface-visibility: hidden !important;
   backface-visibility: hidden !important;
   will-change: transform !important;
-  /* iOS Safari 고정 */
   -webkit-overflow-scrolling: touch !important;
-  /* Android Chrome 고정 */
   contain: layout style paint !important;
+  /* iOS Safari 강화 */
+  -webkit-perspective: 1000px !important;
+  perspective: 1000px !important;
+  /* Android Chrome 강화 */
+  -webkit-transform-style: preserve-3d !important;
+  transform-style: preserve-3d !important;
+  /* 추가 모바일 최적화 */
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  /* 강제 레이어 생성 */
+  isolation: isolate !important;
 }
 
 /* 스크롤했을 때 배경 강화 */
@@ -161,7 +170,7 @@ nav .md\\:hidden {
   z-index: 100000 !important;
 }
 
-/* 모바일에서도 헤더 항상 상단 고정 - 강화된 스타일 */
+/* 모바일에서 헤더 강제 고정 - 초강력 버전 */
 @media (max-width: 768px) {
   nav {
     position: fixed !important;
@@ -193,9 +202,21 @@ nav .md\\:hidden {
     /* Android Chrome 추가 최적화 */
     -webkit-transform-style: preserve-3d !important;
     transform-style: preserve-3d !important;
+    /* 추가 모바일 최적화 */
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    isolation: isolate !important;
+    /* 강제 GPU 가속 */
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    /* 모바일 브라우저 특화 */
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
   }
   
-  /* 모바일에서 스크롤해도 헤더 고정 - 강화된 스타일 */
+  /* 모바일에서 스크롤해도 헤더 고정 - 초강력 버전 */
   nav.scrolled {
     position: fixed !important;
     top: 0 !important;
@@ -211,10 +232,12 @@ nav .md\\:hidden {
     -webkit-backface-visibility: hidden !important;
     backface-visibility: hidden !important;
     will-change: transform !important;
+    -webkit-transform: translate3d(0, 0, 0) !important;
+    transform: translate3d(0, 0, 0) !important;
   }
 }
 
-/* 데스크톱에서도 헤더 항상 상단 고정 */
+/* 데스크톱에서도 헤더 강제 고정 */
 @media (min-width: 769px) {
   nav {
     position: fixed !important;
