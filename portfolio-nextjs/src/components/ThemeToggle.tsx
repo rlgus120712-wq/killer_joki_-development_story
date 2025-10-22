@@ -9,12 +9,11 @@ export default function ThemeToggle() {
 
   useEffect(() => {
     setMounted(true);
-    // localStorage에서 테마 가져오기
+    // localStorage에서 테마 가져오기, 없으면 기본값은 다크 모드
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle('light', savedTheme === 'light');
-    }
+    const initialTheme = savedTheme || 'dark'; // 기본값을 다크 모드로 설정
+    setTheme(initialTheme);
+    document.documentElement.classList.toggle('light', initialTheme === 'light');
   }, []);
 
   const toggleTheme = () => {
@@ -28,7 +27,7 @@ export default function ThemeToggle() {
   if (!mounted) {
     return (
       <button
-        className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all"
+        className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all flex items-center justify-center"
         aria-label="Toggle theme"
       >
         <Sun className="w-5 h-5 text-yellow-400" />
@@ -39,7 +38,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300"
+      className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-all light:bg-gray-200 light:hover:bg-gray-300 flex items-center justify-center"
       aria-label="Toggle theme"
     >
       {theme === 'dark' ? (
