@@ -65,6 +65,20 @@
   html.light .section-bg-even {
     @apply bg-blue-50;
   }
+
+  /* 원형 배경을 위한 bg-white/10 커스터마이징 */
+  .bg-white\/10 {
+    background-color: hsla(0, 0%, 100%, .1);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  html.light .bg-white\/10 {
+    background-color: hsla(0, 0%, 0%, .05);
+  }
 }
 
 /* Custom scrollbar */
