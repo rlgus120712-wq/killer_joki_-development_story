@@ -14,8 +14,10 @@ export default function TechStack() {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">Portfolio Tech Stack</h2>
-          <p className="section-subtitle">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 gradient-text text-center">
+            Portfolio Tech Stack
+          </h2>
+          <p className="text-gray-400 text-base sm:text-lg text-center mb-8 sm:mb-12">
             이 포트폴리오 웹사이트 구축에 사용된 기술들
           </p>
 
