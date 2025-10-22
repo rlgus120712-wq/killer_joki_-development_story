@@ -26,7 +26,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: 'linear',
           }}
-          className="absolute top-1/4 -left-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"
+          className="absolute top-1/4 -left-20 w-48 h-48 sm:w-72 sm:h-72 bg-primary-500/10 rounded-full blur-3xl"
         />
         <motion.div
           animate={{
@@ -38,7 +38,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: 'linear',
           }}
-          className="absolute bottom-1/4 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+          className="absolute bottom-1/4 -right-20 w-64 h-64 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full blur-3xl"
         />
       </div>
 
@@ -53,15 +53,15 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
-            className="mb-10 flex justify-center"
+            className="mb-6 sm:mb-10 flex justify-center"
           >
             <div className="relative">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute -inset-2 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-lg opacity-75"
+                className="absolute -inset-1 sm:-inset-2 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-lg opacity-75"
               />
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/10 shadow-2xl">
+              <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 sm:border-4 border-white/10 shadow-2xl">
                 <Image
                   src="/profile.jpg"
                   alt="조기현 프로필"
@@ -74,7 +74,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl sm:text-7xl font-bold mb-6"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -83,7 +83,7 @@ const Hero = () => {
           </motion.h1>
 
           <motion.h2
-            className="text-2xl sm:text-4xl text-gray-300 mb-4"
+            className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-gray-300 mb-3 sm:mb-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -92,7 +92,7 @@ const Hero = () => {
           </motion.h2>
 
           <motion.p
-            className="text-lg sm:text-xl text-gray-400 mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -101,7 +101,7 @@ const Hero = () => {
           </motion.p>
 
           <motion.div
-            className="flex justify-center space-x-6 mb-12"
+            className="flex justify-center space-x-4 sm:space-x-6 mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -110,25 +110,25 @@ const Hero = () => {
               href="https://github.com/rlgus120712-wq"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
+              className="p-2 sm:p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
             >
-              <Github className="w-6 h-6 group-hover:text-primary-500 transition-colors" />
+              <Github className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-primary-500 transition-colors" />
             </a>
             <a
               href="mailto:rlgus120712@gmail.com"
-              className="p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
+              className="p-2 sm:p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
             >
-              <Mail className="w-6 h-6 group-hover:text-primary-500 transition-colors" />
+              <Mail className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-primary-500 transition-colors" />
             </a>
             <a
               href="https://rowan-cough-23f.notion.site/009caaa7bf3a49e6aff700714288b7db"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
+              className="p-2 sm:p-3 glass rounded-full hover:bg-primary-500/20 transition-colors group"
               aria-label="Notion 문서"
             >
               <svg 
-                className="w-6 h-6 group-hover:text-primary-500 transition-colors" 
+                className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-primary-500 transition-colors" 
                 viewBox="0 0 24 24" 
                 fill="currentColor"
               >
@@ -155,7 +155,7 @@ const Hero = () => {
                   ease: 'easeInOut',
                 }}
               >
-                <ArrowDown className="w-8 h-8" />
+                <ArrowDown className="w-6 h-6 sm:w-8 sm:h-8" />
               </motion.div>
             </button>
           </motion.div>
