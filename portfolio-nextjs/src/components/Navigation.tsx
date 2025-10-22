@@ -5,16 +5,27 @@ import { Menu, X, Sun, Moon } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 
 const Navigation = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
     // 테마 초기화
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'light') {
       setIsDark(false);
       document.documentElement.classList.add('light');
     }
+
+    window.addEventListener('scroll', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -46,7 +57,13 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="bg-gray-900/90 backdrop-blur-md border-b border-gray-800">
+    <nav 
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
+          : 'bg-gray-900/90 backdrop-blur-md'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
