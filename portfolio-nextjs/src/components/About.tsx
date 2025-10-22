@@ -12,32 +12,32 @@ const About = () => {
 
   const features = [
     {
-      icon: <Code2 className="w-6 h-6 sm:w-8 sm:h-8" />,
+      icon: <Code2 className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: '클린 코드',
       description: 'TypeScript와 Feature-Sliced Design으로 유지보수성 99% 향상',
     },
     {
-      icon: <Rocket className="w-6 h-6 sm:w-8 sm:h-8" />,
+      icon: <Rocket className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: '성능 최적화',
       description: 'Vite + TanStack Query로 초기 로딩 속도 40% 개선',
     },
     {
-      icon: <Users className="w-6 h-6 sm:w-8 sm:h-8" />,
+      icon: <Users className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: '협업',
       description: 'Jira + Confluence + GitHub으로 10인+ 팀 효율 증대',
     },
     {
-      icon: <Sparkles className="w-6 h-6 sm:w-8 sm:h-8" />,
+      icon: <Sparkles className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: '지속적 학습',
       description: '매일 기술 블로그 작성 및 최신 트렌드 습득',
     },
     {
-      icon: <Factory className="w-6 h-6 sm:w-8 sm:h-8" />,
+      icon: <Factory className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: '스마트팩토리',
       description: '8개 공장 MES 구축, 생산성 평균 30% 향상 기여',
     },
     {
-      icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8" />,
+      icon: <Shield className="w-8 h-8 sm:w-10 sm:h-10" />,
       title: 'HACCP 인증',
       description: '식품안전관리 시스템으로 국가 인증마크 획득',
     },
