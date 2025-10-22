@@ -46,11 +46,12 @@ const About = () => {
   return (
     <section id="about" className="py-16 sm:py-20 px-4 sm:px-6 pt-20" ref={ref}>
       <div className="max-w-7xl mx-auto">
+        {/* About Me 섹션에 배경 추가 */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
+          className="text-center mb-12 sm:mb-16 glass bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-8"
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 gradient-text">
             About Me
@@ -92,7 +93,7 @@ const About = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden"
+          className="glass bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden"
         >
           <div className="p-6 sm:p-8">
             <div className="flex items-center gap-3 mb-8">
@@ -114,7 +115,7 @@ const About = () => {
                       </div>
                       <h4 className="text-lg sm:text-xl font-bold text-white">Okestro</h4>
                     </div>
-                    <span className="text-xs sm:text-sm text-gray-400 font-medium bg-gray-800/50 px-3 py-1 rounded-full">
+                    <span className="text-xs sm:text-sm text-gray-300 font-medium bg-gradient-to-r from-blue-500/20 to-blue-600/20 px-3 py-1 rounded-full border border-blue-500/30">
                       2023.01 ~ 현재
                     </span>
                   </div>
@@ -136,7 +137,7 @@ const About = () => {
                       </div>
                       <h4 className="text-lg sm:text-xl font-bold text-white">크로니즈시스템</h4>
                     </div>
-                    <span className="text-xs sm:text-sm text-gray-400 font-medium bg-gray-800/50 px-3 py-1 rounded-full">
+                    <span className="text-xs sm:text-sm text-gray-300 font-medium bg-gradient-to-r from-green-500/20 to-green-600/20 px-3 py-1 rounded-full border border-green-500/30">
                       2020.01 ~ 2022.10
                     </span>
                   </div>
