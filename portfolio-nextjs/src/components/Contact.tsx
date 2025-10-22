@@ -54,7 +54,7 @@ const Contact = () => {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
             Get In Touch
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             협업이나 프로젝트 문의가 있으시면 언제든지 연락 주세요!<br />
             함께 멋진 무언가를 만들어가요 🚀
           </p>
@@ -70,15 +70,15 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass p-6 rounded-xl hover:bg-white/10 transition-all group text-center"
+              className="glass p-8 rounded-xl hover:bg-white/10 transition-all group text-center"
             >
-              <div className="text-primary-500 mb-4 flex justify-center group-hover:scale-110 transition-transform">
+              <div className="text-primary-400 mb-6 flex justify-center group-hover:scale-110 transition-transform">
                 {contact.icon}
               </div>
-              <h3 className="text-lg font-bold mb-2 text-white">
+              <h3 className="text-xl font-bold mb-3 text-white">
                 {contact.title}
               </h3>
-              <p className="text-sm text-gray-400 group-hover:text-primary-400 transition-colors">
+              <p className="text-base text-gray-200 group-hover:text-primary-300 transition-colors break-words">
                 {contact.value}
               </p>
             </motion.a>
@@ -89,7 +89,7 @@ const Contact = () => {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center text-gray-400"
+          className="text-center text-gray-300"
         >
           <p className="mb-2">
             © 2025 조기현. All rights reserved.
