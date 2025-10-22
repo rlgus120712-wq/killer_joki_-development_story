@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,11 +66,8 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 - PC와 모바일 모두 스크롤할 때 상단에 고정 */}
-      <motion.nav
-        initial={{ y: 0 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.3 }}
+      {/* 네비게이터 - 순수 CSS로 고정 위치 보장 */}
+      <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
@@ -160,12 +157,11 @@ const Navigation = () => {
         {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
+            <div
               className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800"
+              style={{
+                animation: 'slideDown 0.3s ease-out',
+              }}
             >
               <div className="px-4 py-4 space-y-3">
                 {navItems.map((item) => (
@@ -178,10 +174,10 @@ const Navigation = () => {
                   </button>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
         </AnimatePresence>
-      </motion.nav>
+      </nav>
 
       {/* Spacer - 항상 공간 확보 */}
       <div className="h-16" />
