@@ -47,7 +47,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-12 sm:py-20 px-4" ref={ref}>
+    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           {...animationProps}
@@ -61,81 +61,94 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-6 sm:space-y-8">
+        <div className="space-y-8 sm:space-y-12">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               {...projectAnimationProps}
-              className="glass p-4 sm:p-6 md:p-8 rounded-xl hover:bg-white/10 transition-all"
+              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden hover:from-white/10 hover:to-white/15 transition-all duration-300"
               style={{
-                // 모바일에서 강제로 표시되도록 보장
                 minHeight: isMobile ? 'auto' : 'auto',
                 display: 'block',
                 visibility: 'visible'
               }}
             >
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
-                <div className="flex-1">
-                  <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white pr-2">
+              {/* 모바일 최적화된 카드 헤더 */}
+              <div className="p-6 sm:p-8">
+                <div className="flex items-start justify-between mb-6">
+                  <div className="flex-1 pr-4">
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
                       {project.title}
                     </h3>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary-500 hover:text-primary-400 transition-colors flex-shrink-0"
-                      >
-                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                      </a>
-                    )}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 sm:gap-4 mb-4 text-xs sm:text-sm text-gray-400">
-                    {project.company && (
-                      <div className="flex items-center gap-1 sm:gap-2">
-                        <Building2 className="w-3 h-3 sm:w-4 sm:h-4" />
-                        <span>{project.company}</span>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-400">
+                      {project.company && (
+                        <div className="flex items-center gap-2">
+                          <Building2 className="w-4 h-4 text-primary-400" />
+                          <span className="font-medium">{project.company}</span>
+                        </div>
+                      )}
+                      <div className="flex items-center gap-2">
+                        <Briefcase className="w-4 h-4 text-primary-400" />
+                        <span className="font-medium">{project.role}</span>
                       </div>
-                    )}
-                    <div className="flex items-center gap-1 sm:gap-2">
-                      <Briefcase className="w-3 h-3 sm:w-4 sm:h-4" />
-                      <span>{project.role}</span>
-                    </div>
-                    <div className="flex items-center gap-1 sm:gap-2">
-                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                      <span>{project.period}</span>
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-primary-400" />
+                        <span className="font-medium">{project.period}</span>
+                      </div>
                     </div>
                   </div>
+                  {project.link && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-shrink-0 p-3 bg-primary-500/20 hover:bg-primary-500/30 rounded-xl transition-colors group"
+                    >
+                      <ExternalLink className="w-5 h-5 text-primary-400 group-hover:text-primary-300 transition-colors" />
+                    </a>
+                  )}
+                </div>
 
-                  <p className="text-gray-300 mb-4 text-sm sm:text-base">{project.description}</p>
+                {/* 프로젝트 설명 */}
+                <div className="mb-6">
+                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
 
-                  <div className="mb-4">
-                    <h4 className="text-primary-500 font-semibold mb-2 text-sm sm:text-base">
-                      주요 성과:
-                    </h4>
-                    <ul className="space-y-2 text-gray-300 text-sm sm:text-base">
-                      {project.highlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-primary-500 mr-2 flex-shrink-0">•</span>
-                          <span className={
-                            highlight.startsWith('📊 성과:')
-                              ? 'text-green-400 font-bold'
-                              : ''
-                          }>
-                            {highlight}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                {/* 주요 성과 섹션 */}
+                <div className="mb-6">
+                  <h4 className="text-primary-400 font-semibold mb-4 text-base sm:text-lg flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary-400 rounded-full"></div>
+                    주요 성과
+                  </h4>
+                  <div className="space-y-3">
+                    {project.highlights.map((highlight, i) => (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="flex-shrink-0 w-2 h-2 bg-primary-400 rounded-full mt-2"></div>
+                        <p className={`text-sm sm:text-base leading-relaxed ${
+                          highlight.startsWith('📊 성과:')
+                            ? 'text-green-400 font-semibold'
+                            : 'text-gray-300'
+                        }`}>
+                          {highlight}
+                        </p>
+                      </div>
+                    ))}
                   </div>
+                </div>
 
-                  <div className="flex flex-wrap gap-2">
+                {/* 기술 스택 */}
+                <div>
+                  <h4 className="text-primary-400 font-semibold mb-4 text-base sm:text-lg flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary-400 rounded-full"></div>
+                    기술 스택
+                  </h4>
+                  <div className="flex flex-wrap gap-2 sm:gap-3">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 sm:px-3 sm:py-1 bg-primary-500/20 text-primary-400 rounded-full text-xs sm:text-sm border border-primary-500/30"
+                        className="px-3 py-2 bg-gradient-to-r from-primary-500/20 to-blue-500/20 text-primary-300 rounded-xl text-sm font-medium border border-primary-500/30 hover:border-primary-400/50 transition-colors"
                       >
                         {tech}
                       </span>
