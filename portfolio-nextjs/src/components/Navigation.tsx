@@ -66,23 +66,27 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 모바일 네비게이터 - 완전 고정 */}
-      <div 
-        className="fixed top-0 left-0 right-0 z-[99999]"
+      {/* 네비게이터 - PC와 모바일 모두에서 항상 보임 */}
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
+            : 'bg-transparent'
+        }`}
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 99999,
-          backgroundColor: 'rgba(17, 24, 39, 0.98)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
-          borderBottom: '2px solid rgba(31, 41, 55, 0.8)',
-          transform: 'translateZ(0)',
-          WebkitTransform: 'translateZ(0)',
-          willChange: 'transform',
+          zIndex: 50,
+          backgroundColor: isScrolled ? 'rgba(17, 24, 39, 0.95)' : 'rgba(17, 24, 39, 0.8)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : 'none',
+          borderBottom: '1px solid rgba(31, 41, 55, 0.3)',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -153,7 +157,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu - 완전 고정 */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -161,23 +165,14 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden"
-              style={{
-                backgroundColor: 'rgba(17, 24, 39, 0.98)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderTop: '2px solid rgba(31, 41, 55, 0.8)',
-                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)',
-                position: 'relative',
-                zIndex: 99999,
-              }}
+              className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800"
             >
-              <div className="px-4 py-6 space-y-4">
+              <div className="px-4 py-4 space-y-3">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="block w-full text-left text-gray-200 hover:text-primary-400 transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-lg font-medium"
+                    className="block w-full text-left text-gray-300 hover:text-primary-500 transition-colors py-2 cursor-pointer"
                   >
                     {item.name}
                   </button>
@@ -186,7 +181,7 @@ const Navigation = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.nav>
 
       {/* Spacer */}
       <div className="h-16" />
