@@ -64,33 +64,22 @@ const Navigation = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // 모바일에서는 항상 배경을 보이게 하고, 데스크톱에서는 스크롤에 따라 변경
-  const getBackgroundClass = () => {
-    if (isMobile) {
-      // 모바일: 항상 배경 표시 + 더 강한 배경
-      return 'bg-gray-900/98 backdrop-blur-lg shadow-xl border-b border-gray-800/50';
-    } else {
-      // 데스크톱: 스크롤에 따라 변경
-      return isScrolled
-        ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
-        : 'bg-transparent';
-    }
-  };
-
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getBackgroundClass()}`}
+      {/* 모바일 네비게이터 - 항상 고정 */}
+      <nav 
+        className="fixed top-0 left-0 right-0 z-[9999] bg-gray-900/98 backdrop-blur-lg shadow-xl border-b border-gray-800/50"
         style={{
-          // 모바일에서 더 강한 고정 효과
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
           zIndex: 9999,
+          backgroundColor: 'rgba(17, 24, 39, 0.98)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+          borderBottom: '1px solid rgba(31, 41, 55, 0.5)',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -148,7 +137,8 @@ const Navigation = () => {
               
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-300 hover:text-primary-500 transition-colors"
+                className="text-gray-300 hover:text-primary-500 transition-colors p-2"
+                aria-label="메뉴 열기/닫기"
               >
                 {isMobileMenuOpen ? (
                   <X className="w-6 h-6" />
@@ -160,7 +150,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - 강화된 스타일 */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -168,14 +158,21 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-gray-900/98 backdrop-blur-lg border-t border-gray-800/50"
+              className="md:hidden"
+              style={{
+                backgroundColor: 'rgba(17, 24, 39, 0.98)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                borderTop: '1px solid rgba(31, 41, 55, 0.5)',
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
+              }}
             >
-              <div className="px-4 py-4 space-y-3">
+              <div className="px-4 py-6 space-y-4">
                 {navItems.map((item) => (
                   <button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="block w-full text-left text-gray-300 hover:text-primary-500 transition-colors py-2 cursor-pointer"
+                    className="block w-full text-left text-gray-200 hover:text-primary-400 transition-colors py-3 px-2 rounded-lg hover:bg-white/5 text-lg font-medium"
                   >
                     {item.name}
                   </button>
@@ -184,7 +181,7 @@ const Navigation = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.nav>
+      </nav>
 
       {/* Spacer */}
       <div className="h-16" />
