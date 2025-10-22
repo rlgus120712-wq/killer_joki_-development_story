@@ -61,7 +61,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-8 sm:space-y-12">
+        <div className="space-y-6 sm:space-y-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -73,60 +73,61 @@ const Projects = () => {
                 visibility: 'visible'
               }}
             >
-              {/* 모바일 최적화된 카드 헤더 */}
-              <div className="p-6 sm:p-8">
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex-1 pr-4">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 leading-tight">
-                      {project.title}
-                    </h3>
-                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-sm text-gray-400">
-                      {project.company && (
-                        <div className="flex items-center gap-2">
-                          <Building2 className="w-4 h-4 text-primary-400" />
-                          <span className="font-medium">{project.company}</span>
-                        </div>
-                      )}
-                      <div className="flex items-center gap-2">
-                        <Briefcase className="w-4 h-4 text-primary-400" />
-                        <span className="font-medium">{project.role}</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-primary-400" />
-                        <span className="font-medium">{project.period}</span>
-                      </div>
-                    </div>
-                  </div>
+              <div className="p-4 sm:p-6 md:p-8">
+                {/* 프로젝트 제목과 링크 */}
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-tight flex-1 pr-3">
+                    {project.title}
+                  </h3>
                   {project.link && (
                     <a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 p-3 bg-primary-500/20 hover:bg-primary-500/30 rounded-xl transition-colors group"
+                      className="flex-shrink-0 p-2 bg-primary-500/20 hover:bg-primary-500/30 rounded-lg transition-colors group"
                     >
-                      <ExternalLink className="w-5 h-5 text-primary-400 group-hover:text-primary-300 transition-colors" />
+                      <ExternalLink className="w-4 h-4 text-primary-400 group-hover:text-primary-300 transition-colors" />
                     </a>
                   )}
                 </div>
 
+                {/* 프로젝트 메타데이터 - 한 줄로 정리 */}
+                <div className="mb-4">
+                  <div className="flex flex-wrap items-center gap-3 text-sm text-gray-400">
+                    {project.company && (
+                      <div className="flex items-center gap-1">
+                        <Building2 className="w-3 h-3 text-primary-400" />
+                        <span className="whitespace-nowrap">{project.company}</span>
+                      </div>
+                    )}
+                    <div className="flex items-center gap-1">
+                      <Briefcase className="w-3 h-3 text-primary-400" />
+                      <span className="whitespace-nowrap">{project.role}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-3 h-3 text-primary-400" />
+                      <span className="whitespace-nowrap">{project.period}</span>
+                    </div>
+                  </div>
+                </div>
+
                 {/* 프로젝트 설명 */}
-                <div className="mb-6">
-                  <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
+                <div className="mb-4">
+                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
                     {project.description}
                   </p>
                 </div>
 
                 {/* 주요 성과 섹션 */}
-                <div className="mb-6">
-                  <h4 className="text-primary-400 font-semibold mb-4 text-base sm:text-lg flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary-400 rounded-full"></div>
+                <div className="mb-4">
+                  <h4 className="text-primary-400 font-semibold mb-3 text-sm sm:text-base">
                     주요 성과
                   </h4>
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     {project.highlights.map((highlight, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-2 h-2 bg-primary-400 rounded-full mt-2"></div>
-                        <p className={`text-sm sm:text-base leading-relaxed ${
+                      <div key={i} className="flex items-start gap-2">
+                        <div className="flex-shrink-0 w-1.5 h-1.5 bg-primary-400 rounded-full mt-2"></div>
+                        <p className={`text-xs sm:text-sm leading-relaxed ${
                           highlight.startsWith('📊 성과:')
                             ? 'text-green-400 font-semibold'
                             : 'text-gray-300'
@@ -138,17 +139,16 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* 기술 스택 */}
+                {/* 기술 스택 - 작은 태그로 변경 */}
                 <div>
-                  <h4 className="text-primary-400 font-semibold mb-4 text-base sm:text-lg flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary-400 rounded-full"></div>
+                  <h4 className="text-primary-400 font-semibold mb-3 text-sm sm:text-base">
                     기술 스택
                   </h4>
-                  <div className="flex flex-wrap gap-2 sm:gap-3">
+                  <div className="flex flex-wrap gap-1.5">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-3 py-2 bg-gradient-to-r from-primary-500/20 to-blue-500/20 text-primary-300 rounded-xl text-sm font-medium border border-primary-500/30 hover:border-primary-400/50 transition-colors"
+                        className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded-md text-xs font-medium border border-primary-500/30"
                       >
                         {tech}
                       </span>
