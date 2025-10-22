@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 
@@ -8,10 +8,70 @@ const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    // 모바일 감지
+    const isMobile = () => window.innerWidth < 768;
+
+    // 헤더 강제 고정 함수
+    const forceHeaderFixed = () => {
+      if (!isMobile()) return; // 모바일이 아니면 실행 안함
+      
+      // 스크롤 위치에 따라 헤더 위치 조정
+      const scrollY = window.scrollY;
+      
+      // 헤더를 강제로 상단에 고정
+      nav.style.position = 'fixed';
+      nav.style.top = '0px';
+      nav.style.left = '0px';
+      nav.style.right = '0px';
+      nav.style.zIndex = '99999';
+      nav.style.width = '100%';
+      nav.style.transform = 'translateZ(0)';
+      nav.style.webkitTransform = 'translateZ(0)';
+      nav.style.display = 'block';
+      nav.style.visibility = 'visible';
+      nav.style.opacity = '1';
+      
+      // 스크롤했을 때 배경 강화
+      if (scrollY > 50) {
+        nav.style.backgroundColor = 'rgba(17, 24, 39, 0.95)';
+        nav.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
+        setIsScrolled(true);
+      } else {
+        nav.style.backgroundColor = 'rgba(17, 24, 39, 0.9)';
+        nav.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+        setIsScrolled(false);
+      }
+    };
+
+    // 스크롤 이벤트 핸들러
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      forceHeaderFixed();
+    };
+
+    // 리사이즈 이벤트 핸들러
+    const handleResize = () => {
+      if (isMobile()) {
+        forceHeaderFixed();
+      } else {
+        // 데스크톱에서는 기본 스타일로 복원
+        nav.style.position = 'fixed';
+        nav.style.top = '0px';
+        nav.style.left = '0px';
+        nav.style.right = '0px';
+        nav.style.zIndex = '99999';
+        nav.style.width = '100%';
+        nav.style.transform = '';
+        nav.style.webkitTransform = '';
+        nav.style.display = 'block';
+        nav.style.visibility = 'visible';
+        nav.style.opacity = '1';
+      }
     };
 
     // 테마 초기화
@@ -21,10 +81,24 @@ const Navigation = () => {
       document.documentElement.classList.add('light');
     }
 
-    window.addEventListener('scroll', handleScroll);
+    // 초기 실행
+    forceHeaderFixed();
+
+    // 이벤트 리스너 등록
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
     
+    // 모바일 브라우저 특화 이벤트
+    window.addEventListener('touchstart', handleScroll, { passive: true });
+    window.addEventListener('touchmove', handleScroll, { passive: true });
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('orientationchange', handleResize);
+      window.removeEventListener('touchstart', handleScroll);
+      window.removeEventListener('touchmove', handleScroll);
     };
   }, []);
 
@@ -58,13 +132,31 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 - 간단한 고정 */}
+      {/* 네비게이터 */}
       <nav
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
             : 'bg-gray-900/90 backdrop-blur-md'
         }`}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 99999,
+          backgroundColor: isScrolled ? 'rgba(17, 24, 39, 0.95)' : 'rgba(17, 24, 39, 0.9)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          boxShadow: isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(0, 0, 0, 0.1)',
+          borderBottom: '1px solid rgba(31, 41, 55, 0.3)',
+          display: 'block',
+          visibility: 'visible',
+          opacity: 1,
+          width: '100%',
+          height: '64px',
+        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -143,7 +235,6 @@ const Navigation = () => {
                 animation: 'slideDown 0.3s ease-out',
                 position: 'relative',
                 zIndex: 100000,
-                // 모바일 메뉴도 고정 위치 보장
                 backgroundColor: 'rgba(17, 24, 39, 0.95)',
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
