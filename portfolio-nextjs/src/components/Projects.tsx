@@ -34,7 +34,7 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-blue-400">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 gradient-text">
             Projects
           </h2>
           <p className="text-gray-400 text-base sm:text-lg">
