@@ -97,48 +97,64 @@ html.light ::-webkit-scrollbar-thumb:hover {
 }
 
 /* ============================================
-   모바일 네비게이터 강제 고정 및 가시성 보장
+   모바일 네비게이터 최대 강화 - 절대 사라지지 않음
    ============================================ */
 
-/* 모바일 네비게이터 강제 고정 */
-nav {
+/* 모든 네비게이터 요소에 최대 우선순위 적용 */
+nav, .fixed.top-0 {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  z-index: 9999 !important;
+  z-index: 99999 !important;
   background-color: rgba(17, 24, 39, 0.98) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-  border-bottom: 1px solid rgba(31, 41, 55, 0.5) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+  border-bottom: 2px solid rgba(31, 41, 55, 0.8) !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  will-change: transform !important;
 }
 
 /* 모바일에서 네비게이터가 절대 사라지지 않도록 */
 @media (max-width: 768px) {
-  nav {
+  nav, .fixed.top-0 {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    z-index: 9999 !important;
+    z-index: 99999 !important;
     background-color: rgba(17, 24, 39, 0.98) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-    border-bottom: 1px solid rgba(31, 41, 55, 0.5) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5) !important;
+    border-bottom: 2px solid rgba(31, 41, 55, 0.8) !important;
     transform: translateZ(0) !important;
     -webkit-transform: translateZ(0) !important;
     will-change: transform !important;
   }
   
-  /* 모바일 메뉴도 강화 */
+  /* 모바일 메뉴도 최대 강화 */
   nav .md\\:hidden {
     background-color: rgba(17, 24, 39, 0.98) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border-top: 1px solid rgba(31, 41, 55, 0.5) !important;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 2px solid rgba(31, 41, 55, 0.8) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+    position: relative !important;
+    z-index: 99999 !important;
+  }
+}
+
+/* 모든 화면 크기에서 네비게이터 강제 고정 */
+@media (min-width: 0px) {
+  nav, .fixed.top-0 {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 99999 !important;
   }
 }
 
