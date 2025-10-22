@@ -25,58 +25,36 @@ const Projects = () => {
     triggerOnce: true,
   });
 
-  // 모바일에서는 애니메이션을 단순화
-  const animationProps = isMobile ? {
-    initial: { opacity: 0 },
-    animate: inView ? { opacity: 1 } : {},
-    transition: { duration: 0.3 }
-  } : {
-    initial: { opacity: 0, y: 30 },
-    animate: inView ? { opacity: 1, y: 0 } : {},
-    transition: { duration: 0.6 }
-  };
-
-  const projectAnimationProps = isMobile ? {
-    initial: { opacity: 0 },
-    animate: inView ? { opacity: 1 } : {},
-    transition: { duration: 0.3 }
-  } : {
-    initial: { opacity: 0, y: 50 },
-    animate: inView ? { opacity: 1, y: 0 } : {},
-    transition: { duration: 0.6, delay: 0.2 }
-  };
-
   return (
-    <section id="projects" className="py-16 sm:py-20 px-4 sm:px-6" ref={ref}>
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" className="py-12 sm:py-20 px-3 sm:px-6" ref={ref}>
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          {...animationProps}
-          className="text-center mb-12 sm:mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-8 sm:mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 gradient-text">
             Projects
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg">
+          <p className="text-gray-400 text-sm sm:text-base">
             주요 프로젝트 및 성과물
           </p>
         </motion.div>
 
-        <div className="space-y-6 sm:space-y-8">
+        <div className="space-y-4 sm:space-y-6">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              {...projectAnimationProps}
-              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden hover:from-white/10 hover:to-white/15 transition-all duration-300"
-              style={{
-                minHeight: isMobile ? 'auto' : 'auto',
-                display: 'block',
-                visibility: 'visible'
-              }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300"
             >
-              <div className="p-4 sm:p-6 md:p-8">
-                {/* 프로젝트 제목과 링크 */}
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white leading-tight flex-1 pr-3">
+              <div className="p-4 sm:p-6">
+                {/* 프로젝트 헤더 */}
+                <div className="flex items-start justify-between mb-3">
+                  <h3 className="text-base sm:text-lg font-bold text-white leading-tight flex-1 pr-2">
                     {project.title}
                   </h3>
                   {project.link && (
@@ -84,50 +62,46 @@ const Projects = () => {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-shrink-0 p-2 bg-primary-500/20 hover:bg-primary-500/30 rounded-lg transition-colors group"
+                      className="flex-shrink-0 p-1.5 bg-primary-500/20 hover:bg-primary-500/30 rounded-md transition-colors"
                     >
-                      <ExternalLink className="w-4 h-4 text-primary-400 group-hover:text-primary-300 transition-colors" />
+                      <ExternalLink className="w-3 h-3 text-primary-400" />
                     </a>
                   )}
                 </div>
 
-                {/* 프로젝트 메타데이터 - 한 줄로 정리 */}
-                <div className="mb-4">
-                  <div className="flex flex-wrap items-center gap-3 text-sm text-gray-400">
-                    {project.company && (
-                      <div className="flex items-center gap-1">
-                        <Building2 className="w-3 h-3 text-primary-400" />
-                        <span className="whitespace-nowrap">{project.company}</span>
-                      </div>
-                    )}
+                {/* 메타데이터 - 한 줄로 압축 */}
+                <div className="flex flex-wrap items-center gap-2 mb-3 text-xs text-gray-400">
+                  {project.company && (
                     <div className="flex items-center gap-1">
-                      <Briefcase className="w-3 h-3 text-primary-400" />
-                      <span className="whitespace-nowrap">{project.role}</span>
+                      <Building2 className="w-3 h-3 text-primary-400" />
+                      <span>{project.company}</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3 text-primary-400" />
-                      <span className="whitespace-nowrap">{project.period}</span>
-                    </div>
+                  )}
+                  <div className="flex items-center gap-1">
+                    <Briefcase className="w-3 h-3 text-primary-400" />
+                    <span>{project.role}</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-3 h-3 text-primary-400" />
+                    <span>{project.period}</span>
                   </div>
                 </div>
 
                 {/* 프로젝트 설명 */}
-                <div className="mb-4">
-                  <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
+                <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                  {project.description}
+                </p>
 
-                {/* 주요 성과 섹션 */}
-                <div className="mb-4">
-                  <h4 className="text-primary-400 font-semibold mb-3 text-sm sm:text-base">
+                {/* 주요 성과 - 컴팩트하게 */}
+                <div className="mb-3">
+                  <h4 className="text-primary-400 font-semibold mb-2 text-sm">
                     주요 성과
                   </h4>
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     {project.highlights.map((highlight, i) => (
                       <div key={i} className="flex items-start gap-2">
-                        <div className="flex-shrink-0 w-1.5 h-1.5 bg-primary-400 rounded-full mt-2"></div>
-                        <p className={`text-xs sm:text-sm leading-relaxed ${
+                        <div className="flex-shrink-0 w-1 h-1 bg-primary-400 rounded-full mt-2"></div>
+                        <p className={`text-xs leading-relaxed ${
                           highlight.startsWith('📊 성과:')
                             ? 'text-green-400 font-semibold'
                             : 'text-gray-300'
@@ -139,16 +113,16 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* 기술 스택 - 작은 태그로 변경 */}
+                {/* 기술 스택 - 인라인으로 변경 */}
                 <div>
-                  <h4 className="text-primary-400 font-semibold mb-3 text-sm sm:text-base">
+                  <h4 className="text-primary-400 font-semibold mb-2 text-sm">
                     기술 스택
                   </h4>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1">
                     {project.tech.map((tech) => (
                       <span
                         key={tech}
-                        className="px-2 py-1 bg-primary-500/20 text-primary-300 rounded-md text-xs font-medium border border-primary-500/30"
+                        className="px-2 py-0.5 bg-primary-500/15 text-primary-300 rounded text-xs font-medium"
                       >
                         {tech}
                       </span>
