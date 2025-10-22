@@ -66,7 +66,7 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 - PC와 모바일 모두 항상 표시 */}
+      {/* 네비게이터 - PC와 모바일 모두 스크롤할 때 상단에 고정 */}
       <motion.nav
         initial={{ y: 0 }}
         animate={{ y: 0 }}
