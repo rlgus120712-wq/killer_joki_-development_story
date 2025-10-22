@@ -63,11 +63,11 @@ const Projects = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.05 }} // 지연 시간 단축
-                className="glass bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:bg-white/10 transition-all duration-300"
+                className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden"
               >
-                {/* 아코디언 헤더 */}
+                {/* 아코디언 헤더 - 클릭 가능한 영역 */}
                 <div 
-                  className="p-4 sm:p-6 cursor-pointer"
+                  className="p-4 sm:p-6 cursor-pointer hover:bg-white/5 transition-colors duration-200"
                   onClick={() => toggleExpanded(index)}
                 >
                   <div className="flex items-center justify-between">
@@ -126,7 +126,7 @@ const Projects = () => {
                   </div>
                 </div>
 
-                {/* 아코디언 콘텐츠 */}
+                {/* 아코디언 콘텐츠 - 아래로 펼쳐지는 영역 */}
                 <AnimatePresence>
                   {isExpanded && (
                     <motion.div
@@ -134,11 +134,11 @@ const Projects = () => {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
-                      className="overflow-hidden"
+                      className="overflow-hidden border-t border-white/10"
                     >
-                      <div className="px-4 sm:px-6 pb-4 sm:pb-6 border-t border-white/10">
+                      <div className="px-4 sm:px-6 py-4 sm:py-6">
                         {/* 프로젝트 설명 */}
-                        <p className="text-gray-300 text-base sm:text-lg mb-4 leading-relaxed pt-4">
+                        <p className="text-gray-300 text-base sm:text-lg mb-4 leading-relaxed">
                           {project.description}
                         </p>
 
