@@ -83,13 +83,13 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                {/* 제목 - 완벽한 중앙 정렬 */}
-                <h3 className="text-xl font-bold mb-3 text-white dark:text-white text-center">
+                {/* 제목 - 라이트/다크 모드에 맞는 색상 */}
+                <h3 className="text-xl font-bold mb-3 text-gray-800 dark:text-white text-center group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                   {contact.title}
                 </h3>
                 
-                {/* 내용 - 완벽한 중앙 정렬 */}
-                <p className="text-gray-100 dark:text-gray-100 group-hover:text-white transition-colors break-words leading-relaxed text-center">
+                {/* 내용 - 라이트/다크 모드에 맞는 색상 */}
+                <p className="text-gray-600 dark:text-gray-100 group-hover:text-gray-700 dark:group-hover:text-white transition-colors break-words leading-relaxed text-center">
                   {contact.value}
                 </p>
               </div>
