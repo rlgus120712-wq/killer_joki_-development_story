@@ -14,32 +14,10 @@ const Hero = () => {
       id="home"
       className="min-h-screen flex items-center justify-center relative overflow-hidden grid-background pt-16"
     >
-      {/* Animated background elements */}
+      {/* Static background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 90, 0],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute top-1/4 -left-20 w-48 h-48 sm:w-72 sm:h-72 bg-primary-500/10 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{
-            scale: [1, 1.3, 1],
-            rotate: [0, -90, 0],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: 'linear',
-          }}
-          className="absolute bottom-1/4 -right-20 w-64 h-64 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full blur-3xl"
-        />
+        <div className="absolute top-1/4 -left-20 w-48 h-48 sm:w-72 sm:h-72 bg-primary-500/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-20 w-64 h-64 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -56,11 +34,7 @@ const Hero = () => {
             className="mb-6 sm:mb-10 flex justify-center"
           >
             <div className="relative">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute -inset-1 sm:-inset-2 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-lg opacity-75"
-              />
+              <div className="absolute -inset-1 sm:-inset-2 rounded-full bg-gradient-to-r from-primary-500 via-blue-500 to-purple-500 blur-lg opacity-75" />
               <div className="relative w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full overflow-hidden border-2 sm:border-4 border-white/10 shadow-2xl">
                 <Image
                   src="/profile.jpg"
