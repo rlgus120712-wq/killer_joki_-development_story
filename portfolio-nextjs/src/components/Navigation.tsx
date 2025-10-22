@@ -94,8 +94,6 @@ const Navigation = () => {
           transform: 'translateZ(0)',
           WebkitBackfaceVisibility: 'hidden',
           backfaceVisibility: 'hidden',
-          // iOS Safari에서 fixed position 문제 해결
-          position: 'fixed',
           // Android Chrome에서 fixed position 문제 해결
           willChange: 'transform',
         }}
