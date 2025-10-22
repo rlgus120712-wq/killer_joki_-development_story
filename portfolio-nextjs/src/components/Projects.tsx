@@ -54,7 +54,7 @@ const Projects = () => {
               <div className="p-4 sm:p-6">
                 {/* 프로젝트 헤더 */}
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="text-base sm:text-lg font-bold text-white leading-tight flex-1 pr-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-white leading-tight flex-1 pr-2">
                     {project.title}
                   </h3>
                   {project.link && (
@@ -70,7 +70,7 @@ const Projects = () => {
                 </div>
 
                 {/* 메타데이터 - 한 줄로 압축 */}
-                <div className="flex flex-wrap items-center gap-2 mb-3 text-xs text-gray-400">
+                <div className="flex flex-wrap items-center gap-2 mb-3 text-sm text-gray-400">
                   {project.company && (
                     <div className="flex items-center gap-1">
                       <Building2 className="w-3 h-3 text-primary-400" />
@@ -88,20 +88,20 @@ const Projects = () => {
                 </div>
 
                 {/* 프로젝트 설명 */}
-                <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                <p className="text-gray-300 text-sm sm:text-base mb-3 leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* 주요 성과 - 컴팩트하게 */}
                 <div className="mb-3">
-                  <h4 className="text-primary-400 font-semibold mb-2 text-sm">
+                  <h4 className="text-primary-400 font-semibold mb-2 text-sm sm:text-base">
                     주요 성과
                   </h4>
                   <div className="space-y-1">
                     {project.highlights.map((highlight, i) => (
                       <div key={i} className="flex items-start gap-2">
                         <div className="flex-shrink-0 w-1 h-1 bg-primary-400 rounded-full mt-2"></div>
-                        <p className={`text-xs leading-relaxed ${
+                        <p className={`text-sm leading-relaxed ${
                           highlight.startsWith('📊 성과:')
                             ? 'text-green-400 font-semibold'
                             : 'text-gray-300'
@@ -115,7 +115,7 @@ const Projects = () => {
 
                 {/* 기술 스택 - 인라인으로 변경 */}
                 <div>
-                  <h4 className="text-primary-400 font-semibold mb-2 text-sm">
+                  <h4 className="text-primary-400 font-semibold mb-2 text-sm sm:text-base">
                     기술 스택
                   </h4>
                   <div className="flex flex-wrap gap-1">
