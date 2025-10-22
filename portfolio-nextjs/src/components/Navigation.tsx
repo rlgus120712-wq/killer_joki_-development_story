@@ -66,20 +66,23 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 모바일 네비게이터 - 항상 고정 */}
-      <nav 
-        className="fixed top-0 left-0 right-0 z-[9999] bg-gray-900/98 backdrop-blur-lg shadow-xl border-b border-gray-800/50"
+      {/* 모바일 네비게이터 - 완전 고정 */}
+      <div 
+        className="fixed top-0 left-0 right-0 z-[99999]"
         style={{
           position: 'fixed',
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 9999,
+          zIndex: 99999,
           backgroundColor: 'rgba(17, 24, 39, 0.98)',
-          backdropFilter: 'blur(16px)',
-          WebkitBackdropFilter: 'blur(16px)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-          borderBottom: '1px solid rgba(31, 41, 55, 0.5)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+          borderBottom: '2px solid rgba(31, 41, 55, 0.8)',
+          transform: 'translateZ(0)',
+          WebkitTransform: 'translateZ(0)',
+          willChange: 'transform',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -150,7 +153,7 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu - 강화된 스타일 */}
+        {/* Mobile Menu - 완전 고정 */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -161,10 +164,12 @@ const Navigation = () => {
               className="md:hidden"
               style={{
                 backgroundColor: 'rgba(17, 24, 39, 0.98)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                borderTop: '1px solid rgba(31, 41, 55, 0.5)',
-                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.3)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                borderTop: '2px solid rgba(31, 41, 55, 0.8)',
+                boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.5)',
+                position: 'relative',
+                zIndex: 99999,
               }}
             >
               <div className="px-4 py-6 space-y-4">
@@ -181,7 +186,7 @@ const Navigation = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </div>
 
       {/* Spacer */}
       <div className="h-16" />
