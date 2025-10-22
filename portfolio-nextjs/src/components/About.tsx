@@ -44,7 +44,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-12 sm:py-20 px-4" ref={ref}>
+    <section id="about" className="py-16 sm:py-20 px-4 sm:px-6" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -52,16 +52,21 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 gradient-text">
             About Me
           </h2>
-          <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto font-semibold px-4">
-            매일의 기록 = 성장의 증거<br />
-            5년차 프론트엔드 개발자로, Vue 3와 React 생태계에서<br />
-            엔터프라이즈급 웹 애플리케이션을 설계하고 구축합니다
-          </p>
+          <div className="max-w-4xl mx-auto">
+            <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-4">
+              매일의 기록 = 성장의 증거
+            </p>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              5년차 프론트엔드 개발자로, Vue 3와 React 생태계에서<br className="hidden sm:block" />
+              엔터프라이즈급 웹 애플리케이션을 설계하고 구축합니다
+            </p>
+          </div>
         </motion.div>
 
+        {/* 스킬 카드들 */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {features.map((feature, index) => (
             <motion.div
@@ -69,57 +74,78 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass p-4 sm:p-6 rounded-xl hover:bg-white/10 transition-all group"
+              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:from-white/10 hover:to-white/15 transition-all duration-300 group"
             >
-              <div className="text-primary-500 mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+              <div className="text-primary-400 mb-4 group-hover:scale-110 transition-transform duration-300">
                 {feature.icon}
               </div>
-              <h3 className="text-lg sm:text-xl font-bold mb-2 text-white">
+              <h3 className="text-lg sm:text-xl font-bold mb-3 text-white">
                 {feature.title}
               </h3>
-              <p className="text-gray-400 font-medium text-sm sm:text-base">{feature.description}</p>
+              <p className="text-gray-300 text-sm sm:text-base leading-relaxed">{feature.description}</p>
             </motion.div>
           ))}
         </div>
 
+        {/* 경력 섹션 */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="glass p-6 sm:p-8 rounded-xl mb-8"
+          className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm border border-white/10 rounded-2xl sm:rounded-3xl overflow-hidden"
         >
-          <div className="flex items-center gap-3 mb-6">
-            <Briefcase className="w-6 h-6 sm:w-7 sm:h-7 text-primary-500" />
-            <h3 className="text-xl sm:text-2xl font-bold text-white">경력</h3>
-          </div>
-          
-          <div className="space-y-6 sm:space-y-8">
-            <div className="border-l-4 border-blue-500 pl-4 sm:pl-6">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-0">
-                <div className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
-                  <h4 className="text-lg sm:text-xl font-bold text-white">Okestro</h4>
-                </div>
-                <span className="text-xs sm:text-sm text-gray-400">2023.01 ~ 현재</span>
+          <div className="p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="p-3 bg-primary-500/20 rounded-xl">
+                <Briefcase className="w-6 h-6 sm:w-7 sm:h-7 text-primary-400" />
               </div>
-              <p className="text-gray-300 mb-2 text-sm sm:text-base">Frontend Developer</p>
-              <p className="text-gray-400 text-xs sm:text-sm">
-                멀티 클라우드 관리 플랫폼 개발 • 서비스 카탈로그 • Keycloak SSO • NX Monorepo • FSD 패턴 • MCP 생성형 AI (Cursor, Windsurf)
-              </p>
+              <h3 className="text-xl sm:text-2xl font-bold text-white">경력</h3>
             </div>
-
-            <div className="border-l-4 border-green-500 pl-4 sm:pl-6">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-1 sm:gap-0">
-                <div className="flex items-center gap-2">
-                  <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
-                  <h4 className="text-lg sm:text-xl font-bold text-white">크로니즈시스템</h4>
+            
+            <div className="space-y-8">
+              {/* Okestro */}
+              <div className="relative">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-500 to-blue-400 rounded-full"></div>
+                <div className="pl-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-blue-500/20 rounded-lg">
+                        <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
+                      </div>
+                      <h4 className="text-lg sm:text-xl font-bold text-white">Okestro</h4>
+                    </div>
+                    <span className="text-xs sm:text-sm text-gray-400 font-medium bg-gray-800/50 px-3 py-1 rounded-full">
+                      2023.01 ~ 현재
+                    </span>
+                  </div>
+                  <p className="text-gray-300 mb-3 text-sm sm:text-base font-medium">Frontend Developer</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    멀티 클라우드 관리 플랫폼 개발 • 서비스 카탈로그 • Keycloak SSO • NX Monorepo • FSD 패턴 • MCP 생성형 AI (Cursor, Windsurf)
+                  </p>
                 </div>
-                <span className="text-xs sm:text-sm text-gray-400">2020.01 ~ 2022.10</span>
               </div>
-              <p className="text-gray-300 mb-2 text-sm sm:text-base">Frontend Developer</p>
-              <p className="text-gray-400 text-xs sm:text-sm">
-                스마트팩토리 MES • ERP 연계 • 3D 모니터링 • 수율/일지 관리 • 8개 공장 구축
-              </p>
+
+              {/* 크로니즈시스템 */}
+              <div className="relative">
+                <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-green-500 to-green-400 rounded-full"></div>
+                <div className="pl-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-3 gap-2">
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 bg-green-500/20 rounded-lg">
+                        <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-green-400" />
+                      </div>
+                      <h4 className="text-lg sm:text-xl font-bold text-white">크로니즈시스템</h4>
+                    </div>
+                    <span className="text-xs sm:text-sm text-gray-400 font-medium bg-gray-800/50 px-3 py-1 rounded-full">
+                      2020.01 ~ 2022.10
+                    </span>
+                  </div>
+                  <p className="text-gray-300 mb-3 text-sm sm:text-base font-medium">Frontend Developer</p>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    스마트팩토리 MES • ERP 연계 • 3D 모니터링 • 수율/일지 관리 • 8개 공장 구축
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
