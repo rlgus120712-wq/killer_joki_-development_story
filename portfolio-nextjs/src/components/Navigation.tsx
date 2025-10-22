@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 
@@ -9,14 +9,52 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // 모바일에서 헤더 강제 고정
+      if (navRef.current) {
+        navRef.current.style.position = 'fixed';
+        navRef.current.style.top = '0px';
+        navRef.current.style.left = '0px';
+        navRef.current.style.right = '0px';
+        navRef.current.style.zIndex = '99999';
+        navRef.current.style.transform = 'translateZ(0)';
+        navRef.current.style.webkitTransform = 'translateZ(0)';
+        navRef.current.style.display = 'block';
+        navRef.current.style.visibility = 'visible';
+        navRef.current.style.opacity = '1';
+      }
     };
 
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      
+      // 모바일일 때 추가 최적화
+      if (mobile && navRef.current) {
+        navRef.current.style.position = 'fixed';
+        navRef.current.style.top = '0px';
+        navRef.current.style.left = '0px';
+        navRef.current.style.right = '0px';
+        navRef.current.style.zIndex = '99999';
+        navRef.current.style.transform = 'translateZ(0)';
+        navRef.current.style.webkitTransform = 'translateZ(0)';
+        navRef.current.style.webkitBackfaceVisibility = 'hidden';
+        navRef.current.style.backfaceVisibility = 'hidden';
+        navRef.current.style.willChange = 'transform';
+        navRef.current.style.webkitPerspective = '1000px';
+        navRef.current.style.perspective = '1000px';
+        navRef.current.style.webkitTransformStyle = 'preserve-3d';
+        navRef.current.style.transformStyle = 'preserve-3d';
+        navRef.current.style.contain = 'layout style paint';
+        navRef.current.style.display = 'block';
+        navRef.current.style.visibility = 'visible';
+        navRef.current.style.opacity = '1';
+      }
     };
 
     // 테마 초기화
@@ -26,13 +64,27 @@ const Navigation = () => {
       document.documentElement.classList.add('light');
     }
 
+    // 초기 설정
     checkMobile();
-    window.addEventListener('scroll', handleScroll);
+    
+    // 이벤트 리스너 등록
+    window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', checkMobile);
+    window.addEventListener('orientationchange', checkMobile);
+    
+    // 모바일 브라우저 특화 이벤트
+    window.addEventListener('touchstart', handleScroll, { passive: true });
+    window.addEventListener('touchmove', handleScroll, { passive: true });
+    
+    // 초기 실행
+    handleScroll();
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('orientationchange', checkMobile);
+      window.removeEventListener('touchstart', handleScroll);
+      window.removeEventListener('touchmove', handleScroll);
     };
   }, []);
 
@@ -66,8 +118,9 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 - 모바일과 데스크톱 모두에서 항상 상단 고정 */}
+      {/* 네비게이터 - JavaScript로 강제 고정 */}
       <nav
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
@@ -94,8 +147,14 @@ const Navigation = () => {
           transform: 'translateZ(0)',
           WebkitBackfaceVisibility: 'hidden',
           backfaceVisibility: 'hidden',
-          // Android Chrome에서 fixed position 문제 해결
           willChange: 'transform',
+          // iOS Safari 최적화
+          WebkitPerspective: '1000px',
+          perspective: '1000px',
+          // Android Chrome 최적화
+          WebkitTransformStyle: 'preserve-3d',
+          transformStyle: 'preserve-3d',
+          contain: 'layout style paint',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
