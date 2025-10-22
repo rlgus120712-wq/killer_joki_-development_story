@@ -67,8 +67,8 @@ const Navigation = () => {
   // 모바일에서는 항상 배경을 보이게 하고, 데스크톱에서는 스크롤에 따라 변경
   const getBackgroundClass = () => {
     if (isMobile) {
-      // 모바일: 항상 배경 표시
-      return 'bg-gray-900/95 backdrop-blur-md shadow-lg';
+      // 모바일: 항상 배경 표시 + 더 강한 배경
+      return 'bg-gray-900/98 backdrop-blur-lg shadow-xl border-b border-gray-800/50';
     } else {
       // 데스크톱: 스크롤에 따라 변경
       return isScrolled
@@ -84,6 +84,14 @@ const Navigation = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${getBackgroundClass()}`}
+        style={{
+          // 모바일에서 더 강한 고정 효과
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+        }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -160,7 +168,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800"
+              className="md:hidden bg-gray-900/98 backdrop-blur-lg border-t border-gray-800/50"
             >
               <div className="px-4 py-4 space-y-3">
                 {navItems.map((item) => (
