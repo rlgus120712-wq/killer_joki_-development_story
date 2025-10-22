@@ -47,26 +47,26 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-20 px-4" ref={ref}>
+    <section id="projects" className="py-12 sm:py-20 px-4" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           {...animationProps}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 gradient-text">
             Projects
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-base sm:text-lg">
             주요 프로젝트 및 성과물
           </p>
         </motion.div>
 
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               {...projectAnimationProps}
-              className="glass p-6 sm:p-8 rounded-xl hover:bg-white/10 transition-all"
+              className="glass p-4 sm:p-6 md:p-8 rounded-xl hover:bg-white/10 transition-all"
               style={{
                 // 모바일에서 강제로 표시되도록 보장
                 minHeight: isMobile ? 'auto' : 'auto',
@@ -77,7 +77,7 @@ const Projects = () => {
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-start justify-between mb-4">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white pr-2">
                       {project.title}
                     </h3>
                     {project.link && (
@@ -85,9 +85,9 @@ const Projects = () => {
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-primary-500 hover:text-primary-400 transition-colors flex-shrink-0 ml-2"
+                        className="text-primary-500 hover:text-primary-400 transition-colors flex-shrink-0"
                       >
-                        <ExternalLink className="w-5 h-5 sm:w-6 sm:h-6" />
+                        <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
                       </a>
                     )}
                   </div>
