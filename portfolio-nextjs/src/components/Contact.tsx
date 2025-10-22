@@ -60,8 +60,8 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        {/* 카드들을 중앙 정렬로 배치 */}
-        <div className="flex flex-col items-center space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0 md:justify-items-center mb-16">
+        {/* 카드들을 완벽한 중앙 정렬로 배치 */}
+        <div className="flex flex-col items-center justify-center space-y-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:space-y-0 md:justify-items-center mb-16">
           {contacts.map((contact, index) => (
             <motion.a
               key={contact.title}
@@ -71,11 +71,11 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl glass hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20 w-full max-w-sm md:max-w-none"
+              className="group relative overflow-hidden rounded-2xl glass hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20 w-full max-w-sm md:max-w-none hover:scale-105"
             >
-              <div className="p-8 text-center">
-                {/* 아이콘 - 중앙 정렬 */}
-                <div className="flex justify-center mb-6">
+              <div className="p-8 flex flex-col items-center justify-center text-center min-h-[200px]">
+                {/* 아이콘 - 완벽한 중앙 정렬 */}
+                <div className="flex items-center justify-center mb-6">
                   <div className="p-4 rounded-full bg-gradient-to-br from-primary-500/20 to-primary-600/20 group-hover:from-primary-500/30 group-hover:to-primary-600/30 transition-all duration-300">
                     <div className="text-primary-400 group-hover:text-primary-300 transition-colors">
                       {contact.icon}
@@ -83,18 +83,18 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                {/* 제목 - 중앙 정렬 */}
-                <h3 className="text-xl font-bold mb-3 text-white">
+                {/* 제목 - 완벽한 중앙 정렬 */}
+                <h3 className="text-xl font-bold mb-3 text-white text-center">
                   {contact.title}
                 </h3>
                 
-                {/* 내용 - 중앙 정렬 */}
-                <p className="text-gray-100 group-hover:text-white transition-colors break-words leading-relaxed">
+                {/* 내용 - 완벽한 중앙 정렬 */}
+                <p className="text-gray-100 group-hover:text-white transition-colors break-words leading-relaxed text-center">
                   {contact.value}
                 </p>
               </div>
               
-              {/* 호버 효과 */}
+              {/* 호버 효과 - 라이트/다크 모드 모두에서 자연스럽게 */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.a>
           ))}
