@@ -9,6 +9,7 @@ const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const navRef = useRef<HTMLElement>(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const nav = navRef.current;
@@ -17,16 +18,15 @@ const Navigation = () => {
     // 모바일 감지
     const isMobile = () => window.innerWidth < 768;
 
-    // 헤더 강제 고정 함수
-    const forceHeaderFixed = () => {
-      if (!isMobile()) return; // 모바일이 아니면 실행 안함
+    // 모바일에서 헤더를 동적으로 이동시키는 함수
+    const handleMobileScroll = () => {
+      if (!isMobile()) return;
+
+      const currentScrollY = window.scrollY;
       
-      // 스크롤 위치에 따라 헤더 위치 조정
-      const scrollY = window.scrollY;
-      
-      // 헤더를 강제로 상단에 고정
-      nav.style.position = 'fixed';
-      nav.style.top = '0px';
+      // 헤더를 항상 상단에 강제로 위치시키기
+      nav.style.position = 'absolute';
+      nav.style.top = `${currentScrollY}px`;
       nav.style.left = '0px';
       nav.style.right = '0px';
       nav.style.zIndex = '99999';
@@ -38,39 +38,52 @@ const Navigation = () => {
       nav.style.opacity = '1';
       
       // 스크롤했을 때 배경 강화
-      if (scrollY > 50) {
+      if (currentScrollY > 50) {
         nav.style.backgroundColor = 'rgba(17, 24, 39, 0.95)';
         nav.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.3)';
+        nav.style.backdropFilter = 'blur(12px)';
+        nav.style.webkitBackdropFilter = 'blur(12px)';
         setIsScrolled(true);
       } else {
         nav.style.backgroundColor = 'rgba(17, 24, 39, 0.9)';
         nav.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
+        nav.style.backdropFilter = 'blur(12px)';
+        nav.style.webkitBackdropFilter = 'blur(12px)';
         setIsScrolled(false);
       }
+
+      lastScrollY.current = currentScrollY;
+    };
+
+    // 데스크톱에서는 기본 동작
+    const handleDesktopScroll = () => {
+      if (isMobile()) return;
+      
+      nav.style.position = 'fixed';
+      nav.style.top = '0px';
+      nav.style.left = '0px';
+      nav.style.right = '0px';
+      nav.style.zIndex = '99999';
+      nav.style.width = '100%';
+      nav.style.transform = '';
+      nav.style.webkitTransform = '';
     };
 
     // 스크롤 이벤트 핸들러
     const handleScroll = () => {
-      forceHeaderFixed();
+      if (isMobile()) {
+        handleMobileScroll();
+      } else {
+        handleDesktopScroll();
+      }
     };
 
     // 리사이즈 이벤트 핸들러
     const handleResize = () => {
       if (isMobile()) {
-        forceHeaderFixed();
+        handleMobileScroll();
       } else {
-        // 데스크톱에서는 기본 스타일로 복원
-        nav.style.position = 'fixed';
-        nav.style.top = '0px';
-        nav.style.left = '0px';
-        nav.style.right = '0px';
-        nav.style.zIndex = '99999';
-        nav.style.width = '100%';
-        nav.style.transform = '';
-        nav.style.webkitTransform = '';
-        nav.style.display = 'block';
-        nav.style.visibility = 'visible';
-        nav.style.opacity = '1';
+        handleDesktopScroll();
       }
     };
 
@@ -82,7 +95,7 @@ const Navigation = () => {
     }
 
     // 초기 실행
-    forceHeaderFixed();
+    handleScroll();
 
     // 이벤트 리스너 등록
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -92,6 +105,14 @@ const Navigation = () => {
     // 모바일 브라우저 특화 이벤트
     window.addEventListener('touchstart', handleScroll, { passive: true });
     window.addEventListener('touchmove', handleScroll, { passive: true });
+    window.addEventListener('touchend', handleScroll, { passive: true });
+
+    // 주기적으로 헤더 위치 확인 (모바일에서만)
+    const intervalId = setInterval(() => {
+      if (isMobile()) {
+        handleMobileScroll();
+      }
+    }, 50);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -99,6 +120,8 @@ const Navigation = () => {
       window.removeEventListener('orientationchange', handleResize);
       window.removeEventListener('touchstart', handleScroll);
       window.removeEventListener('touchmove', handleScroll);
+      window.removeEventListener('touchend', handleScroll);
+      clearInterval(intervalId);
     };
   }, []);
 
