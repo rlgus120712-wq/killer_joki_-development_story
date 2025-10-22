@@ -48,7 +48,7 @@ const Skills = () => {
                       </span>
                       <span className="text-gray-400">{skill.level}%</span>
                     </div>
-                    <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+                    <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
                       <motion.div
                         initial={{ width: 0 }}
                         animate={
