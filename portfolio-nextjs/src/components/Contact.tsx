@@ -54,13 +54,13 @@ const Contact = () => {
           <h2 className="text-4xl sm:text-5xl font-bold mb-4 gradient-text">
             Get In Touch
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-200 text-lg max-w-2xl mx-auto">
             협업이나 프로젝트 문의가 있으시면 언제든지 연락 주세요!<br />
             함께 멋진 무언가를 만들어가요 🚀
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {contacts.map((contact, index) => (
             <motion.a
               key={contact.title}
@@ -70,17 +70,31 @@ const Contact = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="glass p-8 rounded-xl hover:bg-white/10 transition-all group text-center"
+              className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700/50 hover:border-primary-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/20"
             >
-              <div className="text-primary-400 mb-6 flex justify-center group-hover:scale-110 transition-transform">
-                {contact.icon}
+              <div className="p-8">
+                {/* 아이콘 */}
+                <div className="flex justify-center mb-6">
+                  <div className="p-4 rounded-full bg-gradient-to-br from-primary-500/20 to-primary-600/20 group-hover:from-primary-500/30 group-hover:to-primary-600/30 transition-all duration-300">
+                    <div className="text-primary-400 group-hover:text-primary-300 transition-colors">
+                      {contact.icon}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* 제목 */}
+                <h3 className="text-xl font-bold mb-3 text-white text-center">
+                  {contact.title}
+                </h3>
+                
+                {/* 내용 */}
+                <p className="text-gray-100 group-hover:text-white transition-colors text-center break-words leading-relaxed">
+                  {contact.value}
+                </p>
               </div>
-              <h3 className="text-xl font-bold mb-3 text-white">
-                {contact.title}
-              </h3>
-              <p className="text-base text-gray-200 group-hover:text-primary-300 transition-colors break-words">
-                {contact.value}
-              </p>
+              
+              {/* 호버 효과 */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </motion.a>
           ))}
         </div>
@@ -89,7 +103,7 @@ const Contact = () => {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center text-gray-300"
+          className="text-center text-gray-200"
         >
           <p className="mb-2">
             © 2025 조기현. All rights reserved.
