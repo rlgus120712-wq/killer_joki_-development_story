@@ -10,52 +10,90 @@ const Navigation = () => {
   const [isDark, setIsDark] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const spacerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-      
-      // 모바일에서 헤더 강제 고정
-      if (navRef.current) {
-        navRef.current.style.position = 'fixed';
-        navRef.current.style.top = '0px';
-        navRef.current.style.left = '0px';
-        navRef.current.style.right = '0px';
-        navRef.current.style.zIndex = '99999';
-        navRef.current.style.transform = 'translateZ(0)';
-        navRef.current.style.webkitTransform = 'translateZ(0)';
-        navRef.current.style.display = 'block';
-        navRef.current.style.visibility = 'visible';
-        navRef.current.style.opacity = '1';
-      }
-    };
+    const nav = navRef.current;
+    const spacer = spacerRef.current;
+    
+    if (!nav || !spacer) return;
 
+    // 모바일 감지
     const checkMobile = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
+      return mobile;
+    };
+
+    // 헤더 강제 고정 함수
+    const forceHeaderFixed = () => {
+      if (!nav) return;
       
-      // 모바일일 때 추가 최적화
-      if (mobile && navRef.current) {
-        navRef.current.style.position = 'fixed';
-        navRef.current.style.top = '0px';
-        navRef.current.style.left = '0px';
-        navRef.current.style.right = '0px';
-        navRef.current.style.zIndex = '99999';
-        navRef.current.style.transform = 'translateZ(0)';
-        navRef.current.style.webkitTransform = 'translateZ(0)';
-        navRef.current.style.webkitBackfaceVisibility = 'hidden';
-        navRef.current.style.backfaceVisibility = 'hidden';
-        navRef.current.style.willChange = 'transform';
-        navRef.current.style.webkitPerspective = '1000px';
-        navRef.current.style.perspective = '1000px';
-        navRef.current.style.webkitTransformStyle = 'preserve-3d';
-        navRef.current.style.transformStyle = 'preserve-3d';
-        navRef.current.style.contain = 'layout style paint';
-        navRef.current.style.display = 'block';
-        navRef.current.style.visibility = 'visible';
-        navRef.current.style.opacity = '1';
+      // 모든 가능한 방법으로 헤더 고정
+      nav.style.cssText = `
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 64px !important;
+        z-index: 99999 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: translate3d(0, 0, 0) !important;
+        -webkit-transform: translate3d(0, 0, 0) !important;
+        background-color: ${isScrolled ? 'rgba(17, 24, 39, 0.95)' : 'rgba(17, 24, 39, 0.9)'} !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        box-shadow: ${isScrolled ? '0 10px 25px -5px rgba(0, 0, 0, 0.3)' : '0 2px 8px rgba(0, 0, 0, 0.1)'} !important;
+        border-bottom: 1px solid rgba(31, 41, 55, 0.3) !important;
+        -webkit-backface-visibility: hidden !important;
+        backface-visibility: hidden !important;
+        will-change: transform !important;
+        -webkit-perspective: 1000px !important;
+        perspective: 1000px !important;
+        -webkit-transform-style: preserve-3d !important;
+        transform-style: preserve-3d !important;
+        contain: layout style paint !important;
+        isolation: isolate !important;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale !important;
+        -webkit-tap-highlight-color: transparent !important;
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        user-select: none !important;
+      `;
+    };
+
+    // 스크롤 핸들러
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 50);
+      
+      // 모바일에서 강제 고정
+      if (checkMobile()) {
+        forceHeaderFixed();
+        
+        // 추가로 DOM에서 직접 조작
+        if (nav) {
+          nav.setAttribute('style', nav.style.cssText);
+          nav.classList.add('mobile-fixed-header');
+        }
       }
     };
+
+    // Intersection Observer로 헤더 감시
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting && checkMobile()) {
+            forceHeaderFixed();
+          }
+        });
+      },
+      { threshold: 0 }
+    );
 
     // 테마 초기화
     const savedTheme = localStorage.getItem('theme');
@@ -66,27 +104,36 @@ const Navigation = () => {
 
     // 초기 설정
     checkMobile();
-    
-    // 이벤트 리스너 등록
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', checkMobile);
-    window.addEventListener('orientationchange', checkMobile);
-    
-    // 모바일 브라우저 특화 이벤트
-    window.addEventListener('touchstart', handleScroll, { passive: true });
-    window.addEventListener('touchmove', handleScroll, { passive: true });
-    
-    // 초기 실행
-    handleScroll();
-    
+    forceHeaderFixed();
+
+    // 헤더 요소 관찰 시작
+    observer.observe(nav);
+
+    // 모든 가능한 이벤트에 리스너 추가
+    const events = [
+      'scroll', 'resize', 'orientationchange', 'touchstart', 
+      'touchmove', 'touchend', 'load', 'DOMContentLoaded'
+    ];
+
+    events.forEach(event => {
+      window.addEventListener(event, handleScroll, { passive: true });
+    });
+
+    // 주기적으로 헤더 위치 확인 (모바일에서만)
+    const intervalId = setInterval(() => {
+      if (checkMobile()) {
+        forceHeaderFixed();
+      }
+    }, 100);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', checkMobile);
-      window.removeEventListener('orientationchange', checkMobile);
-      window.removeEventListener('touchstart', handleScroll);
-      window.removeEventListener('touchmove', handleScroll);
+      observer.disconnect();
+      events.forEach(event => {
+        window.removeEventListener(event, handleScroll);
+      });
+      clearInterval(intervalId);
     };
-  }, []);
+  }, [isScrolled]);
 
   const toggleTheme = () => {
     const newTheme = !isDark;
@@ -118,10 +165,10 @@ const Navigation = () => {
 
   return (
     <>
-      {/* 네비게이터 - JavaScript로 강제 고정 */}
+      {/* 네비게이터 - 모든 방법으로 강제 고정 */}
       <nav
         ref={navRef}
-        className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-[99999] transition-all duration-300 mobile-fixed-header ${
           isScrolled
             ? 'bg-gray-900/95 backdrop-blur-md shadow-lg'
             : 'bg-gray-900/90 backdrop-blur-md'
@@ -142,19 +189,23 @@ const Navigation = () => {
           opacity: 1,
           width: '100%',
           height: '64px',
-          // 모바일 브라우저 호환성을 위한 추가 스타일
-          WebkitTransform: 'translateZ(0)',
-          transform: 'translateZ(0)',
+          transform: 'translate3d(0, 0, 0)',
+          WebkitTransform: 'translate3d(0, 0, 0)',
           WebkitBackfaceVisibility: 'hidden',
           backfaceVisibility: 'hidden',
           willChange: 'transform',
-          // iOS Safari 최적화
           WebkitPerspective: '1000px',
           perspective: '1000px',
-          // Android Chrome 최적화
           WebkitTransformStyle: 'preserve-3d',
           transformStyle: 'preserve-3d',
           contain: 'layout style paint',
+          isolation: 'isolate',
+          WebkitFontSmoothing: 'antialiased',
+          MozOsxFontSmoothing: 'grayscale',
+          WebkitTapHighlightColor: 'transparent',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none',
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -234,7 +285,6 @@ const Navigation = () => {
                 animation: 'slideDown 0.3s ease-out',
                 position: 'relative',
                 zIndex: 100000,
-                // 모바일 메뉴도 고정 위치 보장
                 backgroundColor: 'rgba(17, 24, 39, 0.95)',
                 backdropFilter: 'blur(12px)',
                 WebkitBackdropFilter: 'blur(12px)',
@@ -258,7 +308,7 @@ const Navigation = () => {
       </nav>
 
       {/* Spacer - 항상 공간 확보 */}
-      <div className="h-16" />
+      <div ref={spacerRef} className="h-16" />
     </>
   );
 };
